@@ -1,6 +1,0 @@
-{
-  "name": "ARC Raiders Loot Tracker",
-  "description": "Professional loot and quest tracker for ARC Raiders scouts. Track item values, quest requirements, and merchant levels.",
-  "requestFramePermissions": ["microphone"],
-  "majorCapabilities": []
-}
