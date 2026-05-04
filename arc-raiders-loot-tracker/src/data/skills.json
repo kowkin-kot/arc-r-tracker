@@ -1,0 +1,952 @@
+[
+  {
+    "id": "cond_1",
+    "nameRu": "Привык к весу",
+    "nameEn": "Used To The Weight",
+    "category": "CONDITIONING",
+    "isMajor": true,
+    "descriptionRu": "Ношение щита не так сильно замедляет вас.",
+    "descriptionEn": "Wearing a shield doesn't slow you down as much.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Скорость передвижения",
+    "impactedSkillEn": "Movement Speed",
+    "knownValue": [],
+    "position": {
+      "x": 25,
+      "y": 75
+    },
+    "prerequisiteNodeIds": [],
+    "iconName": "used_to_the_weight.png"
+  },
+  {
+    "id": "cond_2l",
+    "nameRu": "Рождённый взрывом",
+    "nameEn": "Blast-Born",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Ваш слух меньше страдает от близких взрывов.",
+    "descriptionEn": "Your hearing is less affected by nearby explosions.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Улучшение слуха",
+    "impactedSkillEn": "Hearing Enhancement",
+    "knownValue": [],
+    "position": {
+      "x": 20,
+      "y": 65
+    },
+    "prerequisiteNodeIds": [
+      "cond_1"
+    ],
+    "iconName": "blast_born.png"
+  },
+  {
+    "id": "cond_2r",
+    "nameRu": "Мягкое давление",
+    "nameEn": "Gentle Pressure",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Вы производите меньше шума при взломе.",
+    "descriptionEn": "You make less noise when breaching.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Снижение шума",
+    "impactedSkillEn": "Noise Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 30,
+      "y": 65
+    },
+    "prerequisiteNodeIds": [
+      "cond_1"
+    ],
+    "iconName": "gentle_pressure.png"
+  },
+  {
+    "id": "cond_3l",
+    "nameRu": "Бей или беги",
+    "nameEn": "Fight Or Flight",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Когда вы получаете урон в бою, восстанавливается фиксированное количество выносливости. Имеет время восстановления между использованиями.",
+    "descriptionEn": "When you're hurt in combat, regain a fixed amount of stamina. Has a cooldown between uses.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 20,
+      "y": 55
+    },
+    "prerequisiteNodeIds": [
+      "cond_2l"
+    ],
+    "iconName": "fight_or_flight.png"
+  },
+  {
+    "id": "cond_3r",
+    "nameRu": "Опытный взломщик",
+    "nameEn": "Proficient Pryer",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Взлом дверей и контейнеров занимает меньше времени",
+    "descriptionEn": "Breaching doors and containers takes less time",
+    "maxPoints": 5,
+    "impactedSkillRu": "Сокращение времени взлома",
+    "impactedSkillEn": "Breach Time Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 30,
+      "y": 55
+    },
+    "prerequisiteNodeIds": [
+      "cond_2r"
+    ],
+    "iconName": "proficient_pryer.png"
+  },
+  {
+    "id": "cond_4l",
+    "nameRu": "Выносливость выжившего",
+    "nameEn": "Survivor's Stamina",
+    "category": "CONDITIONING",
+    "isMajor": true,
+    "descriptionRu": "Когда вы критически ранены, ваша выносливость восстанавливается быстрее.",
+    "descriptionEn": "When you're critically hurt, your stamina regenerates faster.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 20,
+      "y": 45
+    },
+    "prerequisiteNodeIds": [
+      "cond_3l"
+    ],
+    "iconName": "survivors_stamina.png"
+  },
+  {
+    "id": "cond_4r",
+    "nameRu": "Облегчённый перекат",
+    "nameEn": "Unburdened Roll",
+    "category": "CONDITIONING",
+    "isMajor": true,
+    "descriptionRu": "Если ваш щит ломается, первый перекат в течение нескольких секунд не расходует выносливость.",
+    "descriptionEn": "If your shield breaks, your first Dodge Roll within a few seconds does not cost stamina.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 30,
+      "y": 45
+    },
+    "prerequisiteNodeIds": [
+      "cond_3r"
+    ],
+    "iconName": "unburdened_roll.png"
+  },
+  {
+    "id": "cond_5c",
+    "nameRu": "Немного дополнительно",
+    "nameEn": "A Little Extra",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Взлом объекта генерирует ресурсы.",
+    "descriptionEn": "Breaching an object generates resources.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Генерация ресурсов",
+    "impactedSkillEn": "Resource Generation",
+    "knownValue": [],
+    "position": {
+      "x": 25,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "cond_4l",
+      "cond_4r"
+    ],
+    "iconName": "a_little_extra.png"
+  },
+  {
+    "id": "cond_5l",
+    "nameRu": "Сбит, но полон решимости",
+    "nameEn": "Downed But Determined",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Когда вас сбивают, до полного падения проходит больше времени.",
+    "descriptionEn": "When you're downed, it takes longer before you collapse.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Длительность состояния сбитого",
+    "impactedSkillEn": "Downed Duration",
+    "knownValue": [],
+    "position": {
+      "x": 20,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "cond_4l"
+    ],
+    "iconName": "downed_but_determined.png"
+  },
+  {
+    "id": "cond_5r",
+    "nameRu": "Лёгкий замах",
+    "nameEn": "Effortless Swing",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Способности ближнего боя расходуют меньше выносливости.",
+    "descriptionEn": "Melee abilities cost less stamina.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Снижение расхода выносливости",
+    "impactedSkillEn": "Stamina Cost Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 30,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "cond_4r"
+    ],
+    "iconName": "effortless_swing.png"
+  },
+  {
+    "id": "cond_6c",
+    "nameRu": "Привычное оружие",
+    "nameEn": "Loaded Arms",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Экипированное оружие меньше влияет на вашу нагрузку.",
+    "descriptionEn": "Your equipped weapon has less impact on your encumbrance.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Снижение нагрузки",
+    "impactedSkillEn": "Encumbrance Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 25,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "cond_5c"
+    ],
+    "iconName": "loaded_arms.png"
+  },
+  {
+    "id": "cond_6l",
+    "nameRu": "Черепаший панцирь",
+    "nameEn": "Turtle Crawl",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "В состоянии при смерти вы получаете меньше урона.",
+    "descriptionEn": "While downed, you take less damage.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Снижение урона при смерти",
+    "impactedSkillEn": "Downed Damage Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 20,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "cond_5l"
+    ],
+    "iconName": "turtle_crawl.png"
+  },
+  {
+    "id": "cond_6r",
+    "nameRu": "Удар по небу",
+    "nameEn": "Sky-Clearing Swing",
+    "category": "CONDITIONING",
+    "isMajor": false,
+    "descriptionRu": "Вы наносите больше урона дронам в ближнем бою.",
+    "descriptionEn": "You deal more melee damage to drones.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Урон в ближнем бою",
+    "impactedSkillEn": "Melee Damage",
+    "knownValue": [],
+    "position": {
+      "x": 30,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "cond_5r"
+    ],
+    "iconName": "sky_clearing_swing.png"
+  },
+  {
+    "id": "cond_7l",
+    "nameRu": "Снова на ногах",
+    "nameEn": "Back On Your Feet",
+    "category": "CONDITIONING",
+    "isMajor": true,
+    "descriptionRu": "Когда вы критически ранены, ваше здоровье восстанавливается до определённого предела.",
+    "descriptionEn": "When you're critically hurt, your health regenerates until a certain limit.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Восстановление здоровья",
+    "impactedSkillEn": "Health Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 20,
+      "y": 15
+    },
+    "prerequisiteNodeIds": [
+      "cond_6l",
+      "cond_6c"
+    ],
+    "iconName": "back_on_your_feet.png"
+  },
+  {
+    "id": "cond_7r",
+    "nameRu": "Мухобойка",
+    "nameEn": "Flyswatter",
+    "category": "CONDITIONING",
+    "isMajor": true,
+    "descriptionRu": "Одна атака ближнего боя уничтожает клеща, попа, осу и турель.",
+    "descriptionEn": "A single melee attack destroys a Tick, Pop, Wasp and Turret.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Урон в ближнем бою",
+    "impactedSkillEn": "Melee Damage",
+    "knownValue": [],
+    "position": {
+      "x": 30,
+      "y": 15
+    },
+    "prerequisiteNodeIds": [
+      "cond_6r",
+      "cond_6c"
+    ],
+    "iconName": "flyswatter.png"
+  },
+  {
+    "id": "mob_1",
+    "nameRu": "Ловкий скалолаз",
+    "nameEn": "Nimble Climber",
+    "category": "MOBILITY",
+    "isMajor": true,
+    "descriptionRu": "Вы можете быстрее карабкаться и перепрыгивать.",
+    "descriptionEn": "You can climb and vault more quickly.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Скорость лазания и прыжков",
+    "impactedSkillEn": "Climb and Vault Speed",
+    "knownValue": [],
+    "position": {
+      "x": 50,
+      "y": 75
+    },
+    "prerequisiteNodeIds": [],
+    "iconName": "nimble_climber.png"
+  },
+  {
+    "id": "mob_2l",
+    "nameRu": "Марафонец",
+    "nameEn": "Marathon Runner",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Передвижение требует меньше выносливости.",
+    "descriptionEn": "Moving around costs less stamina.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Снижение затрат выносливости",
+    "impactedSkillEn": "Stamina Cost Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 45,
+      "y": 65
+    },
+    "prerequisiteNodeIds": [
+      "mob_1"
+    ],
+    "iconName": "marathon_runner.png"
+  },
+  {
+    "id": "mob_2r",
+    "nameRu": "Скольжение",
+    "nameEn": "Slip and Slide",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Вы можете скользить дальше и быстрее.",
+    "descriptionEn": "You can slide further and faster.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Дальность скольжения",
+    "impactedSkillEn": "Slide Distance",
+    "knownValue": [],
+    "position": {
+      "x": 55,
+      "y": 65
+    },
+    "prerequisiteNodeIds": [
+      "mob_1"
+    ],
+    "iconName": "slip_and_slide.png"
+  },
+  {
+    "id": "mob_3l",
+    "nameRu": "Молодые лёгкие",
+    "nameEn": "Youthful Lungs",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Увеличивает максимальную выносливость.",
+    "descriptionEn": "Increase your max stamina.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Максимальная выносливость",
+    "impactedSkillEn": "Max Stamina",
+    "knownValue": [],
+    "position": {
+      "x": 45,
+      "y": 55
+    },
+    "prerequisiteNodeIds": [
+      "mob_2l"
+    ],
+    "iconName": "youthful_lungs.png"
+  },
+  {
+    "id": "mob_3r",
+    "nameRu": "Крепкие лодыжки",
+    "nameEn": "Sturdy Ankles",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Вы получаете меньше урона от падения с несмертельной высоты.",
+    "descriptionEn": "You take less fall damage when falling from a non-lethal height.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Снижение урона от падения",
+    "impactedSkillEn": "Fall Damage Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 55,
+      "y": 55
+    },
+    "prerequisiteNodeIds": [
+      "mob_2r"
+    ],
+    "iconName": "sturdy_ankles.png"
+  },
+  {
+    "id": "mob_4l",
+    "nameRu": "Сохранить импульс",
+    "nameEn": "Carry The Momentum",
+    "category": "MOBILITY",
+    "isMajor": true,
+    "descriptionRu": "После перекатывания в спринте бег не расходует выносливость в течение короткого времени. Имеет время восстановления между использованиями.",
+    "descriptionEn": "After a Sprint Dodge Roll, sprinting does not consume stamina for a short time. Has a cooldown between uses.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Снижение расхода выносливости",
+    "impactedSkillEn": "Stamina Cost Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 45,
+      "y": 45
+    },
+    "prerequisiteNodeIds": [
+      "mob_3l"
+    ],
+    "iconName": "carry_the_momentum.png"
+  },
+  {
+    "id": "mob_4r",
+    "nameRu": "Спокойная прогулка",
+    "nameEn": "Calming Stroll",
+    "category": "MOBILITY",
+    "isMajor": true,
+    "descriptionRu": "Во время ходьбы ваша выносливость восстанавливается так же, как при стоянии на месте.",
+    "descriptionEn": "While walking, your stamina regenerates as if you were standing still.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 55,
+      "y": 45
+    },
+    "prerequisiteNodeIds": [
+      "mob_3r"
+    ],
+    "iconName": "calming_stroll.png"
+  },
+  {
+    "id": "mob_5c",
+    "nameRu": "Сначала ползи",
+    "nameEn": "Crawl Before You Walk",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Когда вы сбиты с ног, вы ползаете быстрее.",
+    "descriptionEn": "When you're downed, you crawl faster.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Скорость передвижения",
+    "impactedSkillEn": "Movement Speed",
+    "knownValue": [],
+    "position": {
+      "x": 50,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "mob_4l",
+      "mob_4r"
+    ],
+    "iconName": "crawl_before_you_walk.png"
+  },
+  {
+    "id": "mob_5l",
+    "nameRu": "Легкий перекат",
+    "nameEn": "Effortless Roll",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Перекаты расходуют меньше выносливости.",
+    "descriptionEn": "Dodge Rolls cost less stamina.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Снижение расхода выносливости",
+    "impactedSkillEn": "Stamina Cost Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 45,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "mob_4l"
+    ],
+    "iconName": "effortless_roll.png"
+  },
+  {
+    "id": "mob_5r",
+    "nameRu": "От стены",
+    "nameEn": "Off The Wall",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Вы можете прыгать от стены дальше.",
+    "descriptionEn": "You can Wall Leap further.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Дальность прыжка от стены",
+    "impactedSkillEn": "Wall Leap Distance",
+    "knownValue": [],
+    "position": {
+      "x": 55,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "mob_4r"
+    ],
+    "iconName": "off_the_wall.png"
+  },
+  {
+    "id": "mob_6c",
+    "nameRu": "Энергичный прыгун",
+    "nameEn": "Vigorous Vaulter",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Прыжки через препятствия больше не замедляются при истощении.",
+    "descriptionEn": "Vaulting is no longer slowed down while exhausted.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Скорость лазания и прыжков",
+    "impactedSkillEn": "Climb and Vault Speed",
+    "knownValue": [],
+    "position": {
+      "x": 50,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "mob_5c"
+    ],
+    "iconName": "vigorous_vaulter.png"
+  },
+  {
+    "id": "mob_6l",
+    "nameRu": "Героический прыжок",
+    "nameEn": "Heroic Leap",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "Вы можете перекатываться в спринте дальше.",
+    "descriptionEn": "You can Sprint Dodge Roll further.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Дальность переката",
+    "impactedSkillEn": "Roll Distance",
+    "knownValue": [],
+    "position": {
+      "x": 45,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "mob_5l"
+    ],
+    "iconName": "heroic_leap.png"
+  },
+  {
+    "id": "mob_6r",
+    "nameRu": "Готов к перекату",
+    "nameEn": "Ready To Roll",
+    "category": "MOBILITY",
+    "isMajor": false,
+    "descriptionRu": "При падении временное окно для выполнения восстанавливающего переката увеличивается.",
+    "descriptionEn": "When falling, your timing window to perform a Recovery Roll is increased.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Окно восстанавливающего переката",
+    "impactedSkillEn": "Recover Roll Window",
+    "knownValue": [],
+    "position": {
+      "x": 55,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "mob_5r"
+    ],
+    "iconName": "ready_to_roll.png"
+  },
+  {
+    "id": "mob_7l",
+    "nameRu": "Прыжок за прыжком",
+    "nameEn": "Vaults on Vaults on Vaults",
+    "category": "MOBILITY",
+    "isMajor": true,
+    "descriptionRu": "Прыжки через препятствия больше не расходуют выносливость.",
+    "descriptionEn": "Vaulting no longer costs stamina.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Снижение расхода выносливости",
+    "impactedSkillEn": "Stamina Cost Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 45,
+      "y": 15
+    },
+    "prerequisiteNodeIds": [
+      "mob_6l",
+      "mob_6c"
+    ],
+    "iconName": "vaults_on_vaults_on_vaults.png"
+  },
+  {
+    "id": "mob_7r",
+    "nameRu": "Прыжок с разбега",
+    "nameEn": "Vault Spring",
+    "category": "MOBILITY",
+    "isMajor": true,
+    "descriptionRu": "Позволяет прыгать в конце прыжка через препятствие.",
+    "descriptionEn": "Lets you jump at the end of a vault.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Прыжок с препятствия",
+    "impactedSkillEn": "Vault Jump",
+    "knownValue": [],
+    "position": {
+      "x": 55,
+      "y": 15
+    },
+    "prerequisiteNodeIds": [
+      "mob_6r",
+      "mob_6c"
+    ],
+    "iconName": "vault_spring.png"
+  },
+  {
+    "id": "surv_1",
+    "nameRu": "Проворный ползун",
+    "nameEn": "Agile Croucher",
+    "category": "SURVIVAL",
+    "isMajor": true,
+    "descriptionRu": "Скорость передвижения в присяде увеличена.",
+    "descriptionEn": "Your movement speed while crouching is increased.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Скорость передвижения",
+    "impactedSkillEn": "Movement Speed",
+    "knownValue": [],
+    "position": {
+      "x": 75,
+      "y": 75
+    },
+    "prerequisiteNodeIds": [],
+    "iconName": "agile_croucher.png"
+  },
+  {
+    "id": "surv_2l",
+    "nameRu": "Инстинкты мародёра",
+    "nameEn": "Looter's Instincts",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "При обыске контейнера добыча обнаруживается быстрее.",
+    "descriptionEn": "When searching a container, loot is revealed faster.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Скорость мародёрства",
+    "impactedSkillEn": "Loot Speed",
+    "knownValue": [],
+    "position": {
+      "x": 70,
+      "y": 65
+    },
+    "prerequisiteNodeIds": [
+      "surv_1"
+    ],
+    "iconName": "looters_instincts.png"
+  },
+  {
+    "id": "surv_2r",
+    "nameRu": "Восстанавливающий присед",
+    "nameEn": "Revitalizing Squat",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "Восстановление выносливости в присяде увеличено.",
+    "descriptionEn": "Stamina regeneration while crouched is increased.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 80,
+      "y": 65
+    },
+    "prerequisiteNodeIds": [
+      "surv_1"
+    ],
+    "iconName": "revitalizing_squat.png"
+  },
+  {
+    "id": "surv_3l",
+    "nameRu": "Тихий падальщик",
+    "nameEn": "Silent Scavenger",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "Вы производите меньше шума при мародёрстве",
+    "descriptionEn": "You make less noise when looting",
+    "maxPoints": 5,
+    "impactedSkillRu": "Снижение шума",
+    "impactedSkillEn": "Noise Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 70,
+      "y": 55
+    },
+    "prerequisiteNodeIds": [
+      "surv_2l"
+    ],
+    "iconName": "silent_scavenger.png"
+  },
+  {
+    "id": "surv_3r",
+    "nameRu": "Крафт в раунде",
+    "nameEn": "In-Round Crafting",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "Открывает возможность создавать предметы в полевых условиях на поверхности.",
+    "descriptionEn": "Unlocks the ability to field-craft items while topside.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Полевой крафт",
+    "impactedSkillEn": "Field Crafting",
+    "knownValue": [],
+    "position": {
+      "x": 80,
+      "y": 55
+    },
+    "prerequisiteNodeIds": [
+      "surv_2r"
+    ],
+    "iconName": "in_round_crafting.png"
+  },
+  {
+    "id": "surv_4l",
+    "nameRu": "Страдать молча",
+    "nameEn": "Suffer In Silence",
+    "category": "SURVIVAL",
+    "isMajor": true,
+    "descriptionRu": "В критическом состоянии ваши движения производят меньше шума.",
+    "descriptionEn": "While critically hurt, your movement makes less noise.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Снижение шума",
+    "impactedSkillEn": "Noise Reduction",
+    "knownValue": [],
+    "position": {
+      "x": 70,
+      "y": 45
+    },
+    "prerequisiteNodeIds": [
+      "surv_3l"
+    ],
+    "iconName": "suffer_in_silence.png"
+  },
+  {
+    "id": "surv_4r",
+    "nameRu": "Как новенький",
+    "nameEn": "Good As New",
+    "category": "SURVIVAL",
+    "isMajor": true,
+    "descriptionRu": "Под действием лечения восстановление выносливости увеличено.",
+    "descriptionEn": "While under a healing effect, stamina regeneration is increased.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 80,
+      "y": 45
+    },
+    "prerequisiteNodeIds": [
+      "surv_3r"
+    ],
+    "iconName": "good_as_new.png"
+  },
+  {
+    "id": "surv_5c",
+    "nameRu": "Странствующий мастер",
+    "nameEn": "Traveling Tinkerer",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "Открывает дополнительные предметы для полевого крафта.",
+    "descriptionEn": "Unlocks additional items to field craft.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Полевой крафт",
+    "impactedSkillEn": "Field Crafting",
+    "knownValue": [],
+    "position": {
+      "x": 75,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "surv_4l",
+      "surv_4r"
+    ],
+    "iconName": "traveling_tinkerer.png"
+  },
+  {
+    "id": "surv_5l",
+    "nameRu": "Широкие плечи",
+    "nameEn": "Broad Shoulders",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "Увеличивает максимальное количество предметов, которые вы можете нести.",
+    "descriptionEn": "Increases the maximum amount of items you can carry.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Макс. инвентарь",
+    "impactedSkillEn": "Max Inventory",
+    "knownValue": [
+      "+2 kg per point"
+    ],
+    "position": {
+      "x": 70,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "surv_4l"
+    ],
+    "iconName": "broad_shoulders.png"
+  },
+  {
+    "id": "surv_5r",
+    "nameRu": "Упрямый мул",
+    "nameEn": "Stubborn Mule",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "Восстановление выносливости меньше зависит от перегруза.",
+    "descriptionEn": "Your stamina regeneration is less affected by being over-encumbered.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 80,
+      "y": 35
+    },
+    "prerequisiteNodeIds": [
+      "surv_4r"
+    ],
+    "iconName": "stubborn_mule.png"
+  },
+  {
+    "id": "surv_6c",
+    "nameRu": "Обрывки рейдера",
+    "nameEn": "One Raider's Scraps",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "При обыске контейнеров рейдеров у вас есть небольшой шанс найти дополнительные самодельные предметы.",
+    "descriptionEn": "When looting Raider containers, you have a small chance of finding additional field-crafted items.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Шанс найти добычу",
+    "impactedSkillEn": "Loot Find Chance",
+    "knownValue": [],
+    "position": {
+      "x": 75,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "surv_5c"
+    ],
+    "iconName": "one_raiders_scraps.png"
+  },
+  {
+    "id": "surv_6l",
+    "nameRu": "Удача мародёра",
+    "nameEn": "Looter's Luck",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "Во время обыска есть шанс обнаружить вдвое больше предметов за раз.",
+    "descriptionEn": "While looting, there's a chance to reveal twice as many items at once.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Скорость обыска",
+    "impactedSkillEn": "Loot Search Speed",
+    "knownValue": [],
+    "position": {
+      "x": 70,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "surv_5l"
+    ],
+    "iconName": "looters_luck.png"
+  },
+  {
+    "id": "surv_6r",
+    "nameRu": "Три глубоких вдоха",
+    "nameEn": "Three Deep Breaths",
+    "category": "SURVIVAL",
+    "isMajor": false,
+    "descriptionRu": "После того как способность истощает вашу выносливость, вы восстанавливаетесь быстрее.",
+    "descriptionEn": "After an ability drains your stamina, you recover more quickly.",
+    "maxPoints": 5,
+    "impactedSkillRu": "Восстановление выносливости",
+    "impactedSkillEn": "Stamina Regeneration",
+    "knownValue": [],
+    "position": {
+      "x": 80,
+      "y": 25
+    },
+    "prerequisiteNodeIds": [
+      "surv_5r"
+    ],
+    "iconName": "three_deep_breaths.png"
+  },
+  {
+    "id": "surv_7l",
+    "nameRu": "Взлом защиты",
+    "nameEn": "Security Breach",
+    "category": "SURVIVAL",
+    "isMajor": true,
+    "descriptionRu": "Позволяет взламывать защищённые шкафчики.",
+    "descriptionEn": "Lets you breach Security Lockers.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Взлом защиты",
+    "impactedSkillEn": "Security Breach",
+    "knownValue": [],
+    "position": {
+      "x": 70,
+      "y": 15
+    },
+    "prerequisiteNodeIds": [
+      "surv_6l",
+      "surv_6c"
+    ],
+    "iconName": "security_breach.png"
+  },
+  {
+    "id": "surv_7r",
+    "nameRu": "Сапёр",
+    "nameEn": "Minesweeper",
+    "category": "SURVIVAL",
+    "isMajor": true,
+    "descriptionRu": "Мины и взрывные устройства можно обезвредить, находясь рядом.",
+    "descriptionEn": "Mines and explosive deployables can be defused when in close proximity.",
+    "maxPoints": 1,
+    "impactedSkillRu": "Обезвреживание взрывчатки",
+    "impactedSkillEn": "Explosive Defuse",
+    "knownValue": [],
+    "position": {
+      "x": 80,
+      "y": 15
+    },
+    "prerequisiteNodeIds": [
+      "surv_6r",
+      "surv_6c"
+    ],
+    "iconName": "minesweeper.png"
+  }
+]
