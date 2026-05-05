@@ -107,6 +107,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    // Save to local storage whenever scrappyLevel changes
     window.localStorage.setItem('arc_scrappy_level', scrappyLevel.toString());
   }, [scrappyLevel]);
 
