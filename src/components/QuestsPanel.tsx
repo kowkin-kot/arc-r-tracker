@@ -43,14 +43,14 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
         {/* Left Column: NPC Levels */}
         <div>
           <h3 className="text-white font-bold text-sm flex items-center gap-2 mb-4">
-            <Cpu size={16} className="text-emerald-400" /> Уровни торговцев:
+            <Cpu size={16} className="text-emerald-400" /> Убежище:
           </h3>
           
           <div className="space-y-4">
             {/* Scrappy */}
             <div className="bg-slate-950/50 p-4 rounded-lg border border-slate-800">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-sm font-bold text-white">Scrappy</span>
+                <span className="text-sm font-bold text-white">Плюшкин</span>
                 <span className="text-xs text-slate-400">Уровень {scrappyLevel}</span>
               </div>
               <div className="flex gap-1">
@@ -69,10 +69,19 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
             </div>
 
             {/* Workshops */}
-            {(Object.keys(workshopLevels) as WorkshopType[]).map(type => (
+            {(Object.keys(workshopLevels) as WorkshopType[]).map(type => {
+              const translatedType = {
+                Weapon: 'Оружейный верстак',
+                Gear: 'Верстак для снаряжения',
+                Med: 'Медицинская лаборатория',
+                Utility: 'Верстак для инструментов',
+                Processing: 'Очиститель'
+              }[type] || type;
+
+              return (
               <div key={type} className="bg-slate-950/50 p-4 rounded-lg border border-slate-800">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-sm font-bold text-white">{type}</span>
+                  <span className="text-sm font-bold text-white">{translatedType}</span>
                   <span className="text-xs text-slate-400">Уровень {workshopLevels[type]}</span>
                 </div>
                 <div className="flex gap-1">
@@ -89,7 +98,8 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
                   ))}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
