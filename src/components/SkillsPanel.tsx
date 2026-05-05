@@ -221,7 +221,8 @@ export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
         </button>
       </div>
 
-      <div className="relative w-full h-[750px] bg-slate-950 rounded-xl border border-slate-800 overflow-hidden shadow-2xl">
+      <div className="relative w-full h-[750px] bg-slate-950 rounded-xl border border-slate-800 shadow-2xl overflow-x-auto custom-scrollbar">
+        <div className="relative min-w-[800px] h-full">
         {/* Background decorations */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:30px_30px]"></div>
         
@@ -363,6 +364,7 @@ export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
           })}
         </div>
 
+        </div>
         {/* Skill Info Panel Overlay */}
         <AnimatePresence>
           {selectedSkill && (
@@ -370,7 +372,7 @@ export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
-              className="absolute top-4 right-4 w-80 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 p-6 rounded-2xl shadow-2xl z-50 overflow-hidden"
+              className="absolute top-4 left-4 sm:left-auto right-4 z-50 overflow-hidden sm:w-80 bg-slate-900/95 backdrop-blur-xl border border-slate-700/50 p-6 rounded-2xl shadow-2xl"
             >
                 {/* Decorative category badge */}
                 <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
