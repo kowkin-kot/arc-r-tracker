@@ -17,7 +17,8 @@ import {
 import { ProcessedItem, Rarity } from '../types';
 import { ItemImage } from './ItemImage';
 import { questsList, projectsList, itemsList } from '../data/db';
-import itemsJson from '../data/arctracker_items.json';
+
+let cachedItemsJson: any = null;
 
 interface ItemDetailModalProps {
   item: ProcessedItem | null;
@@ -44,7 +45,22 @@ const recMap = {
 import { Shield, HelpCircle, Trash2 } from 'lucide-react';
 
 export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose }) => {
-  if (!item) return null;
+  const [itemsJson, setItemsJson] = React.useState<any>(cachedItemsJson);
+
+  React.useEffect(() => {
+    if (!itemsJson) {
+      fetch('/arctracker_items.json')
+        .then(r => r.json())
+        .then(d => {
+          cachedItemsJson = d;
+          setItemsJson(d);
+        })
+        .catch(e => console.error("Could not load item details", e));
+    }
+  }, [itemsJson]);
+
+  // wait until loaded
+  if (!item || !itemsJson) return null;
 
   const rStyle = rarityStyles[item.rarity];
   const recConf = recMap[item.currentRec as keyof typeof recMap] || recMap.drop;
