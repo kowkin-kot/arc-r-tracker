@@ -26,9 +26,6 @@ export const BlueprintsPanel: React.FC<BlueprintsPanelProps> = ({
   search: externalSearch
 }) => {
   const [filter, setFilter] = useState<'all' | 'collected' | 'missing'>('all');
-  const [categoryFilter, setCategoryFilter] = useState<string>('All');
-
-  const categories = useMemo(() => ['All', ...Array.from(new Set(blueprints.map(b => b.type)))], [blueprints]);
 
   const filteredBlueprints = useMemo(() => {
     let result = blueprints;
@@ -43,10 +40,6 @@ export const BlueprintsPanel: React.FC<BlueprintsPanelProps> = ({
       );
     }
 
-    if (categoryFilter !== 'All') {
-      result = result.filter(b => b.type === categoryFilter);
-    }
-
     if (filter === 'collected') {
       result = result.filter(b => collectedBlueprints.includes(b.id));
     } else if (filter === 'missing') {
@@ -59,7 +52,7 @@ export const BlueprintsPanel: React.FC<BlueprintsPanelProps> = ({
       if (collectedA !== collectedB) return collectedA ? 1 : -1;
       return a.name.localeCompare(b.name);
     });
-  }, [blueprints, collectedBlueprints, filter, categoryFilter, externalSearch]);
+  }, [blueprints, collectedBlueprints, filter, externalSearch]);
 
   const stats = useMemo(() => {
     return {
@@ -109,22 +102,6 @@ export const BlueprintsPanel: React.FC<BlueprintsPanelProps> = ({
             ))}
           </div>
         </div>
-
-        <div className="mt-4 flex gap-2 overflow-x-auto scrollbar-hide pb-1">
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setCategoryFilter(cat)}
-              className={`whitespace-nowrap px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all border ${
-                categoryFilter === cat
-                  ? 'bg-slate-200 border-white text-slate-900'
-                  : 'bg-slate-800 border-slate-700 text-slate-500 hover:text-slate-300'
-              }`}
-            >
-              {cat === 'All' ? 'Все категории' : cat}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* Blueprints List */}
@@ -167,9 +144,6 @@ export const BlueprintsPanel: React.FC<BlueprintsPanelProps> = ({
                 <div className="flex items-center justify-between gap-1 overflow-hidden">
                   <span className={`text-[8px] font-bold uppercase truncate ${collectedBlueprints.includes(bp.id) ? 'text-slate-600' : 'text-slate-400'}`}>
                     {bp.type}
-                  </span>
-                  <span className={`text-[7px] font-bold px-1 rounded-sm border border-current shrink-0 ${collectedBlueprints.includes(bp.id) ? 'text-slate-700' : 'text-blue-400/80'}`}>
-                    {bp.rarity.substring(0, 3).toUpperCase()}
                   </span>
                 </div>
                 <h3 className={`font-bold text-[13px] leading-tight truncate transition-colors ${collectedBlueprints.includes(bp.id) ? 'text-slate-500' : 'text-white'}`}>
