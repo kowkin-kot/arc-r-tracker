@@ -55,13 +55,19 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
   const craftBench = rawItemObj?.craftBench;
   const blueprintLocked = rawItemObj?.blueprintLocked;
 
+  const usedInCrafting = (itemsJson as any).items?.filter((x: any) => x.recipe && Object.keys(x.recipe).includes(item.id)) || [];
+
   const translatedBenchType = craftBench ? ({
     'explosives_bench': 'Верстак для взрывчатки',
     'gear_bench': 'Верстак для снаряжения',
+    'equipment_bench': 'Верстак для снаряжения',
     'medical_bench': 'Медицинская лаборатория',
+    'med_station': 'Медицинская лаборатория',
     'weapon_bench': 'Оружейный верстак',
     'utility_bench': 'Верстак для инструментов',
     'processing': 'Очиститель',
+    'refiner': 'Очиститель',
+    'workbench': 'Верстак'
   }[craftBench as string] || craftBench) : null;
 
   return (
@@ -259,12 +265,36 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
               {/* Dismantle */}
               {item.dismantle && (
                 <section className="space-y-1.5">
-                  <div className="flex items-center gap-2 text-slate-400">
+                  <div className="flex items-center gap-2 text-amber-400">
                     <Wrench size={16} />
-                    <h3 className="text-xs font-bold uppercase tracking-widest text-slate-500 leading-none mt-0.5">Разбор на материалы</h3>
+                    <h3 className="text-xs font-bold uppercase tracking-widest leading-none mt-0.5">Разбирается на</h3>
                   </div>
                   <div className="bg-orange-500/5 rounded-lg p-3 border border-orange-500/10">
                     <p className="text-orange-200/80 text-sm italic">{item.dismantle}</p>
+                  </div>
+                </section>
+              )}
+
+              {/* Used In Crafting */}
+              {usedInCrafting.length > 0 && (
+                <section className="space-y-1.5">
+                  <div className="flex items-center gap-2 text-amber-400">
+                    <Wrench size={16} />
+                    <h3 className="text-xs font-bold uppercase tracking-widest leading-none mt-0.5">Используется в крафте</h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {usedInCrafting.map((cItem: any) => {
+                      const dbItem = itemsList.find(i => i.id === cItem.id);
+                      const iName = dbItem?.ruName || cItem.name?.ru || cItem.id;
+                      return (
+                        <div key={cItem.id} className="flex border border-slate-700/50 rounded-lg p-2 bg-slate-900/50 hover:bg-slate-800/80 transition-colors">
+                          <div className="flex items-center gap-3">
+                            <ItemImage name={iName} src={dbItem?.image || cItem.imageFilename} className="w-10 h-10 object-contain rounded border border-amber-500/20" />
+                            <span className="text-sm font-medium text-slate-200">{iName}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </section>
               )}
