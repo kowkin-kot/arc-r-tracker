@@ -1,4 +1,3 @@
-{
   "compilerOptions": {
     "target": "ES2022",
     "experimentalDecorators": true,
@@ -22,5 +21,6 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "exclude": ["src/data/arctracker_items.json"]
 }
