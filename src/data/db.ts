@@ -3328,7 +3328,7 @@ export const itemsList: Item[] = [
   {
     "id": "canto_i",
     "name": "Canto I",
-    "ruName": "Canto I",
+    "ruName": "Канто I",
     "rarity": "Legendary",
     "type": "Оружие",
     "usedFor": "",
@@ -3343,7 +3343,7 @@ export const itemsList: Item[] = [
   {
     "id": "canto_ii",
     "name": "Canto II",
-    "ruName": "Canto II",
+    "ruName": "Канто II",
     "rarity": "Legendary",
     "type": "Оружие",
     "usedFor": "",
@@ -3358,7 +3358,7 @@ export const itemsList: Item[] = [
   {
     "id": "canto_iii",
     "name": "Canto III",
-    "ruName": "Canto III",
+    "ruName": "Канто III",
     "rarity": "Legendary",
     "type": "Оружие",
     "usedFor": "",
@@ -3373,7 +3373,7 @@ export const itemsList: Item[] = [
   {
     "id": "canto_iv",
     "name": "Canto IV",
-    "ruName": "Canto IV",
+    "ruName": "Канто IV",
     "rarity": "Legendary",
     "type": "Оружие",
     "usedFor": "",
@@ -4097,7 +4097,7 @@ export const itemsList: Item[] = [
   {
     "id": "dolabra",
     "name": "Dolabra",
-    "ruName": "Dolabra",
+    "ruName": "Долабра",
     "rarity": "Legendary",
     "type": "Оружие",
     "usedFor": "",
@@ -9320,9 +9320,9 @@ export const itemsList: Item[] = [
   {
     "id": "vaporizer_regulator",
     "name": "Vaporizer Regulator",
-    "ruName": "Vaporizer Regulator",
+    "ruName": "Регулятор вапорайзера",
     "rarity": "Epic",
-    "type": "Мусор",
+    "type": "Материалы",
     "usedFor": "",
     "value": 6000,
     "stack": 3,
@@ -9904,7 +9904,7 @@ export const blueprintsList: Blueprint[] = [
   {
     "id": "canto_blueprint",
     "name": "Canto Blueprint",
-    "ruName": "Canto Чертеж",
+    "ruName": "Канто Чертеж",
     "rarity": "Common",
     "type": "Blueprint",
     "source": "Loot",
@@ -9985,7 +9985,7 @@ export const blueprintsList: Blueprint[] = [
   {
     "id": "dolabra_blueprint",
     "name": "Dolabra Blueprint",
-    "ruName": "Dolabra Чертеж",
+    "ruName": "Долабра Чертеж",
     "rarity": "Common",
     "type": "Blueprint",
     "source": "Loot",
