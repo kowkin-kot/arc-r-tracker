@@ -16,7 +16,8 @@ import {
 } from 'lucide-react';
 import { ProcessedItem, Rarity } from '../types';
 import { ItemImage } from './ItemImage';
-import { questsList, projectsList } from '../data/db';
+import { questsList, projectsList, itemsList } from '../data/db';
+import itemsJson from '../data/arctracker_items.json';
 
 interface ItemDetailModalProps {
   item: ProcessedItem | null;
@@ -48,6 +49,20 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
   const rStyle = rarityStyles[item.rarity];
   const recConf = recMap[item.currentRec as keyof typeof recMap] || recMap.drop;
   const RecIcon = recConf.icon;
+
+  const rawItemObj = (itemsJson as any).items?.find((x: any) => x.id === item.id);
+  const recipe = rawItemObj?.recipe;
+  const craftBench = rawItemObj?.craftBench;
+  const blueprintLocked = rawItemObj?.blueprintLocked;
+
+  const translatedBenchType = craftBench ? ({
+    'explosives_bench': 'Верстак для взрывчатки',
+    'gear_bench': 'Верстак для снаряжения',
+    'medical_bench': 'Медицинская лаборатория',
+    'weapon_bench': 'Оружейный верстак',
+    'utility_bench': 'Верстак для инструментов',
+    'processing': 'Очиститель',
+  }[craftBench as string] || craftBench) : null;
 
   return (
     <AnimatePresence>
@@ -192,6 +207,51 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
                         );
                       })}
                     </ul>
+                  </div>
+                </section>
+              )}
+
+              {/* Crafting Recipe */}
+              {recipe && (
+                <section className="space-y-1.5">
+                  <div className="flex items-center gap-2 text-amber-400">
+                    <Wrench size={16} />
+                    <h3 className="text-xs font-bold uppercase tracking-widest leading-none mt-0.5">Рецепт крафта</h3>
+                  </div>
+                  <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4 space-y-4">
+                    {translatedBenchType && (
+                      <div className="flex items-center gap-2 text-sm">
+                        <span className="text-slate-400">Верстак:</span>
+                        <span className="text-amber-300 font-semibold">{translatedBenchType}</span>
+                      </div>
+                    )}
+                    
+                    {blueprintLocked && (
+                      <div className="space-y-1">
+                        <span className="text-sm text-slate-400">Требуемый чертеж:</span>
+                        <div className="flex items-center gap-2">
+                          <ItemImage name={item.name + " Чертёж"} src={item.image ? item.image.replace('.png', '_blueprint.png') : undefined} className="w-8 h-8 rounded border border-amber-500/30" />
+                          <span className="text-amber-200 text-sm font-medium">{item.ruName} Чертеж</span>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="space-y-2">
+                      <span className="text-sm text-slate-400">Требуемые материалы:</span>
+                      <div className="flex flex-wrap gap-2">
+                        {Object.entries(recipe).map(([reqId, qty]) => {
+                          const reqItem = itemsList.find(i => i.id === reqId);
+                          const reqName = reqItem?.ruName || reqId;
+                          return (
+                            <div key={reqId} className="flex items-center gap-2 bg-slate-900/80 border border-slate-700 p-1.5 pr-3 rounded-lg">
+                              <ItemImage name={reqName} src={reqItem?.image} className="w-6 h-6 object-contain" />
+                              <span className="text-xs font-medium text-slate-300">{reqName}</span>
+                              <span className="text-xs font-bold text-amber-500">x{qty as number}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                 </section>
               )}
