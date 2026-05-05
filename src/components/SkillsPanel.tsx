@@ -355,8 +355,8 @@ export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
                   {cat.label}
                 </span>
                 <div className={`px-3 py-1 rounded-full border bg-slate-950/80 backdrop-blur-sm text-xs font-black transition-all duration-500 ${
-                  pts > 0 ? `${color.border} ${color.text} shadow-[0_0_10px_${color.glow}]` : 'border-slate-800 text-slate-500'
-                }`}>
+                  pts > 0 ? `${color.border} ${color.text}` : 'border-slate-800 text-slate-500'
+                }`} style={{ boxShadow: pts > 0 ? `0 0 10px ${color.glow}` : undefined }}>
                   {pts} ОЧКОВ
                 </div>
               </div>
@@ -424,8 +424,9 @@ export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
                             <div 
                               key={i} 
                               className={`h-1.5 w-6 rounded-full transition-all duration-300 ${
-                                i < (skillPoints[selectedSkill.id] || 0) ? `${CATEGORY_COLORS[selectedSkill.category].bg} shadow-[0_0_8px_${CATEGORY_COLORS[selectedSkill.category].glow}]` : 'bg-slate-800'
+                                i < (skillPoints[selectedSkill.id] || 0) ? `${CATEGORY_COLORS[selectedSkill.category].bg}` : 'bg-slate-800'
                               }`}
+                              style={{ boxShadow: i < (skillPoints[selectedSkill.id] || 0) ? `0 0 8px ${CATEGORY_COLORS[selectedSkill.category].glow}` : undefined }}
                             />
                           ))}
                         </div>
