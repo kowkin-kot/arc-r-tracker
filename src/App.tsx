@@ -39,6 +39,13 @@ declare global {
   }
 }
 
+let didPrefetchJson = false;
+// Fetch large json early to avoid UI stutter on modal open
+if (typeof window !== 'undefined' && !didPrefetchJson) {
+  didPrefetchJson = true;
+  fetch('/arctracker_items.json').catch(e => console.error("Prefetch error", e));
+}
+
 export default function App() {
   const [search, setSearch] = useState('');
   const [filterType, setFilterType] = useState('All');
