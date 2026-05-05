@@ -9320,7 +9320,7 @@ export const itemsList: Item[] = [
   {
     "id": "vaporizer_regulator",
     "name": "Vaporizer Regulator",
-    "ruName": "Регулятор вапорайзера",
+    "ruName": "Регулятор испепелителя",
     "rarity": "Epic",
     "type": "Материалы",
     "usedFor": "",
