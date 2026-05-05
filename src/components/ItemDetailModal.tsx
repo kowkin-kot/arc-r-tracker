@@ -49,7 +49,7 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
 
   React.useEffect(() => {
     if (!itemsJson) {
-      fetch('/arctracker_items.json')
+      fetch(import.meta.env.BASE_URL + 'arctracker_items.json')
         .then(r => r.json())
         .then(d => {
           cachedItemsJson = d;
