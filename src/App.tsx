@@ -82,19 +82,21 @@ export default function App() {
   });
 
   const [workshopLevels, setWorkshopLevels] = useState<Record<WorkshopType, number>>(() => {
+    const defaultData: Record<WorkshopType, number> = {
+      Weapon: 0,
+      Gear: 0,
+      Med: 0,
+      Utility: 0,
+      Processing: 0,
+      Explosives: 0,
+      Workbench: 1,
+      Storage: 0
+    };
     try {
       const saved = window.localStorage.getItem('arc_workshop_levels');
-      return saved ? JSON.parse(saved) : {
-        'Механик': 1,
-        'Оружейник': 1,
-        'Медик': 1
-      };
+      return saved ? { ...defaultData, ...JSON.parse(saved) } : defaultData;
     } catch {
-      return {
-        'Механик': 1,
-        'Оружейник': 1,
-        'Медик': 1
-      };
+      return defaultData;
     }
   });
 
