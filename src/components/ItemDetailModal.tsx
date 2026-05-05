@@ -57,7 +57,7 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
 
   const usedInCrafting = (itemsJson as any).items?.filter((x: any) => x.recipe && Object.keys(x.recipe).includes(item.id)) || [];
 
-  const translatedBenchType = craftBench ? ({
+  const formatCraftBench = (bench: string) => ({
     'explosives_bench': 'Верстак для взрывчатки',
     'gear_bench': 'Верстак для снаряжения',
     'equipment_bench': 'Верстак для снаряжения',
@@ -67,8 +67,13 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
     'utility_bench': 'Верстак для инструментов',
     'processing': 'Очиститель',
     'refiner': 'Очиститель',
-    'workbench': 'Верстак'
-  }[craftBench as string] || craftBench) : null;
+    'workbench': 'Верстак',
+    'in_raid': 'В рейде'
+  }[bench] || bench);
+
+  const translatedBenchType = craftBench 
+    ? (Array.isArray(craftBench) ? craftBench.map(formatCraftBench).join(' / ') : formatCraftBench(craftBench)) 
+    : null;
 
   return (
     <AnimatePresence>
