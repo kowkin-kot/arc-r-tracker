@@ -75,7 +75,10 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
                 Gear: 'Верстак для снаряжения',
                 Med: 'Медицинская лаборатория',
                 Utility: 'Верстак для инструментов',
-                Processing: 'Очиститель'
+                Processing: 'Очиститель',
+                Explosives: 'Верстак для взрывчатки',
+                Workbench: 'Верстак',
+                Storage: 'Хранилище'
               }[type] || type;
 
               return (
