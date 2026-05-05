@@ -7,7 +7,7 @@ export type Rarity = 'Legendary' | 'Epic' | 'Rare' | 'Uncommon' | 'Common';
 export type ItemType = string;
 export type Recommendation = 'must_keep' | 'keep' | 'situational' | 'drop' | 'quest_target';
 
-export type WorkshopType = 'Weapon' | 'Gear' | 'Med' | 'Utility' | 'Processing';
+export type WorkshopType = 'Weapon' | 'Gear' | 'Med' | 'Utility' | 'Processing' | 'Explosives' | 'Workbench' | 'Storage';
 
 export interface WorkshopRequirement {
   type: WorkshopType;
