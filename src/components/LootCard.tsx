@@ -7,7 +7,6 @@ import React from 'react';
 import { Info, Coins, Layers, Wrench, Star, CheckCircle2, AlertTriangle, Trash2, Target, ClipboardList } from 'lucide-react';
 import { ProcessedItem } from '../types';
 import { ItemImage } from './ItemImage';
-import { motion } from 'motion/react';
 import { questsList } from '../data/db';
 
 const rarityStyles = {
@@ -67,13 +66,7 @@ export const LootCard: React.FC<LootCardProps> = ({ item, onClick }) => {
   }
 
   return (
-    <motion.div 
-      layout
-      initial={{ opacity: 0, scale: 0.98 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.98 }}
+    <div 
       id={`loot-card-${item.id}`}
       onClick={onClick}
       className={`bg-slate-900 rounded-lg border overflow-hidden flex flex-col transition-all h-full cursor-pointer hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(37,99,235,0.05)] ${item.isQuestTarget || item.isScrappyActive ? 'border-purple-500/60 shadow-[0_0_15px_rgba(147,51,234,0.1)]' : 'border-slate-800'}`}
@@ -137,6 +130,6 @@ export const LootCard: React.FC<LootCardProps> = ({ item, onClick }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
