@@ -58,6 +58,9 @@ export interface Quest {
   nameRu: string;
   trader?: string;
   map?: string[];
+  descriptionRu?: string;
+  objectivesRu?: string[];
+  requiredItems?: { itemId: string; quantity: number }[];
 }
 
 export interface ProjectPhase {
