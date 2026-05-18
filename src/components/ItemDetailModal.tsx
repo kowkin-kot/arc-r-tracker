@@ -23,6 +23,8 @@ let cachedItemsJson: any = null;
 interface ItemDetailModalProps {
   item: ProcessedItem | null;
   onClose: () => void;
+  isEditMode?: boolean;
+  onSaveOverride?: (itemId: string, data: Partial<ProcessedItem>) => void;
 }
 
 const rarityStyles: Record<Rarity, { color: string; bg: string; border: string; label: string }> = {
@@ -44,8 +46,27 @@ const recMap = {
 // Fixed imports for the ones missing from top
 import { Shield, HelpCircle, Trash2 } from 'lucide-react';
 
-export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose }) => {
+export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose, isEditMode = false, onSaveOverride }) => {
   const [itemsJson, setItemsJson] = React.useState<any>(cachedItemsJson);
+
+  const [editRuName, setEditRuName] = React.useState('');
+  const [editUsedFor, setEditUsedFor] = React.useState('');
+
+  React.useEffect(() => {
+    if (item) {
+      setEditRuName(item.ruName || '');
+      setEditUsedFor(item.usedFor || '');
+    }
+  }, [item]);
+
+  const handleSave = () => {
+    if (item && onSaveOverride) {
+      onSaveOverride(item.id, {
+        ruName: editRuName,
+        usedFor: editUsedFor
+      });
+    }
+  };
 
   React.useEffect(() => {
     if (!itemsJson) {
@@ -119,6 +140,33 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose 
                   {rStyle.label} Item
                 </span>
                 <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight">{item.ruName}</h2>
+                {isEditMode && (
+                  <div className="mt-2 space-y-2 bg-blue-500/10 p-3 rounded-lg border border-blue-500/30">
+                    <div>
+                      <label className="text-[10px] font-bold text-blue-400 uppercase mb-1 block">Название (RU)</label>
+                      <input 
+                        type="text" 
+                        value={editRuName}
+                        onChange={(e) => setEditRuName(e.target.value)}
+                        className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[10px] font-bold text-blue-400 uppercase mb-1 block">Описание/Использование (RU)</label>
+                      <textarea 
+                        value={editUsedFor}
+                        onChange={(e) => setEditUsedFor(e.target.value)}
+                        className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none h-20 resize-none"
+                      />
+                    </div>
+                    <button 
+                      onClick={handleSave}
+                      className="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold py-1.5 rounded transition-colors"
+                    >
+                      Сохранить изменения
+                    </button>
+                  </div>
+                )}
                 <span className="text-xs text-slate-500 font-mono italic">{item.name}</span>
                 
                 <div className="flex gap-2 mt-2">
