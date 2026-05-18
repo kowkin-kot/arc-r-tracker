@@ -4,11 +4,10 @@
  */
 
 import React from 'react';
-import { Target, Wrench } from 'lucide-react';
+import { Target, Wrench, Cpu } from 'lucide-react';
 import { questsList, projectsList } from '../data/db';
 import { motion } from 'motion/react';
 import { WorkshopType } from '../types';
-import { Cpu } from 'lucide-react';
 
 interface QuestsPanelProps {
   completedQuests: string[];
@@ -19,6 +18,7 @@ interface QuestsPanelProps {
   setScrappyLevel: (l: number) => void;
   workshopLevels: Record<WorkshopType, number>;
   updateWorkshopLevel: (type: WorkshopType, level: number) => void;
+  search?: string;
 }
 
 export const QuestsPanel: React.FC<QuestsPanelProps> = ({ 
@@ -29,24 +29,41 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
   scrappyLevel,
   setScrappyLevel,
   workshopLevels,
-  updateWorkshopLevel
+  updateWorkshopLevel,
+  search = ''
 }) => {
+  const [questDetails, setQuestDetails] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    fetch(import.meta.env.BASE_URL + 'arctracker_quests.json')
+      .then(r => r.json())
+      .then(d => setQuestDetails(d.quests))
+      .catch(e => console.error("Could not load quest details", e));
+  }, []);
+
+  const filteredQuests = React.useMemo(() => {
+    if (!search.trim()) return questsList;
+    const term = search.toLowerCase();
+    return questsList.filter(q => 
+      q.nameEn.toLowerCase().includes(term) || 
+      q.nameRu.toLowerCase().includes(term) ||
+      (q.trader && q.trader.toLowerCase().includes(term))
+    );
+  }, [search]);
+
   return (
-    <motion.div 
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: 'auto', opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
+    <div 
       id="quests-panel"
-      className="mt-3 bg-slate-900/95 border border-slate-700 rounded-xl p-5 shadow-lg backdrop-blur-xl overflow-hidden"
+      className="mt-3 bg-slate-900 border border-slate-800 rounded-xl p-3 sm:p-5 shadow-lg overflow-hidden mb-20"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
         {/* Left Column: NPC Levels */}
         <div>
           <h3 className="text-white font-bold text-sm flex items-center gap-2 mb-4">
-            <Cpu size={16} className="text-emerald-400" /> Убежище:
+            <Cpu size={16} className="text-emerald-400" /> Уровни торговцев:
           </h3>
           
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {/* Scrappy */}
             <div className="bg-slate-950/50 p-4 rounded-lg border border-slate-800">
               <div className="flex justify-between items-center mb-3">
@@ -71,12 +88,12 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
             {/* Workshops */}
             {(Object.keys(workshopLevels) as WorkshopType[]).map(type => {
               const translatedType = {
-                Weapon: 'Оружейный верстак',
-                Gear: 'Верстак для снаряжения',
-                Med: 'Медицинская лаборатория',
-                Utility: 'Верстак для инструментов',
-                Processing: 'Очиститель',
-                Explosives: 'Верстак для взрывчатки',
+                Weapon: 'Оружие',
+                Gear: 'Снаряжение',
+                Med: 'Медпункт',
+                Utility: 'Инструменты',
+                Processing: 'Очистка',
+                Explosives: 'Взрывчатка',
                 Workbench: 'Верстак',
                 Storage: 'Хранилище'
               }[type] || type;
@@ -85,11 +102,12 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
               <div key={type} className="bg-slate-950/50 p-4 rounded-lg border border-slate-800">
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-sm font-bold text-white">{translatedType}</span>
-                  <span className="text-xs text-slate-400">Уровень {workshopLevels[type]}</span>
+                  <span className="text-xs text-slate-400">Ур. {workshopLevels[type]}</span>
                 </div>
                 <div className="flex gap-1">
                   {[1, 2, 3, 4].map(lvl => (
                     <button
+                      id={`workshop-${type}-${lvl}`}
                       key={lvl}
                       onClick={() => updateWorkshopLevel(type, lvl)}
                       className={`flex-1 py-1.5 rounded text-xs font-bold transition-all ${
@@ -107,11 +125,11 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
         </div>
 
         {/* Right Column: Projects */}
-        <div>
+        <div id="projects-section">
           <h3 className="text-white font-bold text-sm flex items-center gap-2 mb-4">
             <Wrench size={16} className="text-blue-400" /> Проекты базы:
           </h3>
-          <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+          <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
             {projectsList.map(project => {
               const completedPhase = completedProjectPhases[project.id] || 0;
               return (
@@ -154,34 +172,97 @@ export const QuestsPanel: React.FC<QuestsPanelProps> = ({
         </div>
       </div>
 
-      <hr className="border-slate-800 my-6" />
+      <hr className="border-slate-800 my-8" />
 
       {/* Story Quests */}
       <div id="story-quests">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-6">
           <h3 className="text-white font-bold text-sm flex items-center gap-2">
-            <Target size={16} className="text-purple-400" /> Выполненные квесты:
+            <Target size={16} className="text-purple-400" /> Основные задания:
           </h3>
+          {search && (
+            <span className="text-xs text-slate-500">Найдено: {filteredQuests.length}</span>
+          )}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-          {questsList.map(q => (
-            <label 
-              key={q.id} 
-              id={`quest-label-${q.id}`}
-              className="flex items-center gap-2 text-sm text-slate-300 p-2.5 bg-slate-950/50 rounded-lg cursor-pointer hover:bg-slate-800 border border-slate-800/50 transition-colors select-none"
-            >
-              <input 
-                id={`quest-check-${q.id}`}
-                type="checkbox" 
-                checked={completedQuests.includes(q.id)} 
-                onChange={() => toggleQuest(q.id)} 
-                className="rounded text-purple-500 bg-slate-900 border-slate-700 focus:ring-purple-500 w-4 h-4 shrink-0 transition-all cursor-pointer" 
-              />
-              <span className={completedQuests.includes(q.id) ? 'line-through text-slate-600 truncate' : 'truncate'}>{q.nameRu}</span>
-            </label>
-          ))}
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {filteredQuests.map(q => {
+            const isCompleted = completedQuests.includes(q.id);
+            const details = questDetails ? questDetails[q.id] : null;
+            
+            return (
+              <div 
+                key={q.id} 
+                className={`flex flex-col p-4 bg-slate-950/50 rounded-xl border transition-all ${
+                  isCompleted ? 'border-slate-800 opacity-60' : 'border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <input 
+                    id={`quest-check-${q.id}`}
+                    type="checkbox" 
+                    checked={isCompleted} 
+                    onChange={() => toggleQuest(q.id)} 
+                    className="mt-1 rounded text-purple-500 bg-slate-900 border-slate-700 focus:ring-purple-500 w-5 h-5 shrink-0 transition-all cursor-pointer" 
+                  />
+                  <div>
+                    <h4 className={`font-bold text-base ${isCompleted ? 'text-slate-500 line-through' : 'text-white'}`}>
+                      {q.nameRu}
+                    </h4>
+                    <div className="flex items-center gap-3 mt-1">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-400/10 px-2 py-0.5 rounded">
+                        {q.trader}
+                      </span>
+                      {q.map && q.map.length > 0 && (
+                        <span className="text-[10px] font-medium text-slate-500 uppercase">
+                          {q.map.join(', ')}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {!isCompleted && details && (
+                  <div className="mt-2 text-xs space-y-3">
+                    {details.description?.ru && (
+                      <p className="text-slate-400 italic leading-relaxed border-l-2 border-slate-800 pl-3">
+                        {details.description.ru}
+                      </p>
+                    )}
+                    
+                    {details.objectives && details.objectives.length > 0 && (
+                      <div className="space-y-1.5">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase">Цели:</p>
+                        <ul className="space-y-1">
+                          {details.objectives.map((obj: any, idx: number) => (
+                            <li key={idx} className="flex gap-2 text-slate-300">
+                              <span className="text-purple-500 text-[10px] mt-0.5">•</span>
+                              <span>{obj.ru || obj.en}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {details.requiredItemIds && details.requiredItemIds.length > 0 && (
+                      <div className="p-2 bg-slate-900/50 rounded-lg border border-slate-800/50">
+                        <p className="text-[10px] font-bold text-blue-400 uppercase mb-1">Требуется:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {details.requiredItemIds.map((req: any, idx: number) => (
+                            <span key={idx} className="text-[10px] font-medium text-slate-300 bg-slate-800 px-2 py-1 rounded">
+                              {req.itemId.replace(/_/g, ' ')} x{req.quantity}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
