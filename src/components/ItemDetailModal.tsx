@@ -51,11 +51,15 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose,
 
   const [editRuName, setEditRuName] = React.useState('');
   const [editUsedFor, setEditUsedFor] = React.useState('');
+  const [editValue, setEditValue] = React.useState(0);
+  const [editStack, setEditStack] = React.useState(0);
 
   React.useEffect(() => {
     if (item) {
       setEditRuName(item.ruName || '');
       setEditUsedFor(item.usedFor || '');
+      setEditValue(item.value || 0);
+      setEditStack(item.stack || 0);
     }
   }, [item]);
 
@@ -63,7 +67,9 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose,
     if (item && onSaveOverride) {
       onSaveOverride(item.id, {
         ruName: editRuName,
-        usedFor: editUsedFor
+        usedFor: editUsedFor,
+        value: editValue,
+        stack: editStack
       });
     }
   };
@@ -142,21 +148,43 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose,
                 <h2 className="text-xl sm:text-2xl font-bold text-white leading-tight">{item.ruName}</h2>
                 {isEditMode && (
                   <div className="mt-2 space-y-2 bg-blue-500/10 p-3 rounded-lg border border-blue-500/30">
-                    <div>
-                      <label className="text-[10px] font-bold text-blue-400 uppercase mb-1 block">Название (RU)</label>
-                      <input 
-                        type="text" 
-                        value={editRuName}
-                        onChange={(e) => setEditRuName(e.target.value)}
-                        className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none"
-                      />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div>
+                        <label className="text-[10px] font-bold text-blue-400 uppercase mb-1 block">Название (RU)</label>
+                        <input 
+                          type="text" 
+                          value={editRuName}
+                          onChange={(e) => setEditRuName(e.target.value)}
+                          className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none"
+                        />
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <div>
+                          <label className="text-[10px] font-bold text-blue-400 uppercase mb-1 block">Цена</label>
+                          <input 
+                            type="number" 
+                            value={editValue}
+                            onChange={(e) => setEditValue(parseInt(e.target.value) || 0)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none"
+                          />
+                        </div>
+                        <div>
+                          <label className="text-[10px] font-bold text-blue-400 uppercase mb-1 block">Стак</label>
+                          <input 
+                            type="number" 
+                            value={editStack}
+                            onChange={(e) => setEditStack(parseInt(e.target.value) || 0)}
+                            className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none"
+                          />
+                        </div>
+                      </div>
                     </div>
                     <div>
                       <label className="text-[10px] font-bold text-blue-400 uppercase mb-1 block">Описание/Использование (RU)</label>
                       <textarea 
                         value={editUsedFor}
                         onChange={(e) => setEditUsedFor(e.target.value)}
-                        className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none h-20 resize-none"
+                        className="w-full bg-slate-950 border border-slate-700 rounded px-2 py-1 text-sm text-white focus:border-blue-500 outline-none h-16 resize-none"
                       />
                     </div>
                     <button 
