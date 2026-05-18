@@ -51,8 +51,7 @@ export default function App() {
   const [filterType, setFilterType] = useState('All');
   const [showQuestItemsOnly, setShowQuestItemsOnly] = useState(false);
   const [showProjectItemsOnly, setShowProjectItemsOnly] = useState(false);
-  const [showQuestsPanel, setShowQuestsPanel] = useState(false);
-  const [activeTab, setActiveTab] = useState<'items' | 'blueprints' | 'skills'>('items');
+  const [activeTab, setActiveTab] = useState<'items' | 'blueprints' | 'quests' | 'skills'>('items');
   const [selectedItem, setSelectedItem] = useState<ProcessedItem | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
   const [overrides, setOverrides] = useState<Record<string, Partial<ProcessedItem>>>(() => {
@@ -291,8 +290,8 @@ export default function App() {
           isListening={isListening}
           speechSupported={speechSupported}
           handleVoiceSearch={handleVoiceSearch}
-          showQuestsPanel={showQuestsPanel}
-          setShowQuestsPanel={setShowQuestsPanel}
+          showQuestsPanel={activeTab === 'quests'}
+          setShowQuestsPanel={(val) => setActiveTab(val ? 'quests' : 'items')}
         />
 
         {/* Tab Switcher */}
@@ -320,6 +319,17 @@ export default function App() {
             Чертежи
           </button>
           <button
+            onClick={() => setActiveTab('quests')}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-all ${
+              activeTab === 'quests' 
+                ? 'bg-blue-600 text-white shadow-lg' 
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+            }`}
+          >
+            <Target size={16} />
+            Квесты
+          </button>
+          <button
             onClick={() => setActiveTab('skills')}
             className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold transition-all ${
               activeTab === 'skills' 
@@ -332,22 +342,28 @@ export default function App() {
           </button>
         </div>
 
-        <AnimatePresence>
-          {showQuestsPanel && (
-            <QuestsPanel 
-              scrappyLevel={scrappyLevel}
-              setScrappyLevel={setScrappyLevel}
-              completedQuests={completedQuests}
-              toggleQuest={toggleQuest}
-              workshopLevels={workshopLevels}
-              updateWorkshopLevel={updateWorkshopLevel}
-              completedProjectPhases={completedProjectPhases}
-              updateProjectPhase={updateProjectPhase}
-            />
-          )}
-        </AnimatePresence>
-
         <AnimatePresence mode="wait">
+          {activeTab === 'quests' && (
+            <motion.div
+              key="quests-tab"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
+              <QuestsPanel 
+                scrappyLevel={scrappyLevel}
+                setScrappyLevel={setScrappyLevel}
+                completedQuests={completedQuests}
+                toggleQuest={toggleQuest}
+                workshopLevels={workshopLevels}
+                updateWorkshopLevel={updateWorkshopLevel}
+                completedProjectPhases={completedProjectPhases}
+                updateProjectPhase={updateProjectPhase}
+                search={search}
+              />
+            </motion.div>
+          )}
+
           {activeTab === 'items' && (
             <motion.div
               key="items-tab"
