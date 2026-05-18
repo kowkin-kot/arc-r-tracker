@@ -54,6 +54,34 @@ export default function App() {
   const [showQuestsPanel, setShowQuestsPanel] = useState(false);
   const [activeTab, setActiveTab] = useState<'items' | 'blueprints' | 'skills'>('items');
   const [selectedItem, setSelectedItem] = useState<ProcessedItem | null>(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [overrides, setOverrides] = useState<Record<string, Partial<ProcessedItem>>>(() => {
+    try {
+      const saved = window.localStorage.getItem('arc_overrides');
+      return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+      return {};
+    }
+  });
+
+  const saveOverride = (itemId: string, data: Partial<ProcessedItem>) => {
+    const newOverrides = { ...overrides, [itemId]: { ...overrides[itemId], ...data } };
+    setOverrides(newOverrides);
+    window.localStorage.setItem('arc_overrides', JSON.stringify(newOverrides));
+  };
+
+  const handleEditClick = () => {
+    if (isEditMode) {
+      setIsEditMode(false);
+      return;
+    }
+    const pwd = prompt('Введите пароль для редактирования:');
+    if (pwd === 'jfw!qe7Hge&') {
+      setIsEditMode(true);
+    } else if (pwd !== null) {
+      alert('Неверный пароль');
+    }
+  };
   
   // Persistence for Quests
   const [completedQuests, setCompletedQuests] = useState<string[]>(() => {
@@ -182,21 +210,24 @@ export default function App() {
       let isQuestTarget = false;
       let isProjectTarget = false;
 
-      if (item.quests && item.quests.length > 0) {
-        const activeQuests = item.quests.filter(q => !completedQuests.includes(q));
+      const override = overrides[item.id];
+      const mergedItem = override ? { ...item, ...override } : item;
+
+      if (mergedItem.quests && mergedItem.quests.length > 0) {
+        const activeQuests = mergedItem.quests.filter(q => !completedQuests.includes(q));
         if (activeQuests.length > 0) isQuestTarget = true;
       }
 
-      if (item.projects && item.projects.length > 0) {
-        const activeProjects = item.projects.filter(p => !completedProjectPhases[p.projectId] || completedProjectPhases[p.projectId] < p.phase);
+      if (mergedItem.projects && mergedItem.projects.length > 0) {
+        const activeProjects = mergedItem.projects.filter(p => !completedProjectPhases[p.projectId] || completedProjectPhases[p.projectId] < p.phase);
         if (activeProjects.length > 0) isProjectTarget = true;
       }
 
       if (isQuestTarget || isProjectTarget) currentRec = 'quest_target'; 
 
-      return { ...item, currentRec, isQuestTarget, isProjectTarget } as ProcessedItem;
+      return { ...mergedItem, currentRec, isQuestTarget, isProjectTarget } as ProcessedItem;
     });
-  }, [completedQuests, completedProjectPhases]);
+  }, [completedQuests, completedProjectPhases, overrides]);
 
   // Apply filters and sorting
   const displayedItems = useMemo(() => {
@@ -235,6 +266,12 @@ export default function App() {
               <h1 className="text-xl sm:text-3xl font-black text-white tracking-tight flex items-baseline gap-2">
                 ARC Raiders <span className="text-blue-500">Лут Трекер</span>
                 <span className="text-slate-800 text-xs font-normal cursor-default" title="Предметов в базе">{itemsData.length}</span>
+                <button 
+                  onClick={handleEditClick}
+                  className={`ml-2 text-[10px] uppercase tracking-widest font-bold transition-colors ${isEditMode ? 'text-blue-500' : 'text-slate-900 hover:text-slate-800'}`}
+                >
+                  {isEditMode ? '[EDIT MODE ON]' : 'edit'}
+                </button>
               </h1>
             </motion.div>
             <a 
@@ -442,6 +479,8 @@ export default function App() {
         <ItemDetailModal 
           item={selectedItem} 
           onClose={() => setSelectedItem(null)} 
+          isEditMode={isEditMode}
+          onSaveOverride={saveOverride}
         />
       </div>
     </div>
