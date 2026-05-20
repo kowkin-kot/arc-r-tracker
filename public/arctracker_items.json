@@ -167,7 +167,7 @@
       "id": "advanced_mechanical_components",
       "name": {
         "en": "Advanced Mechanical Components",
-        "ru": "Продвинутые механи��еские компоненты"
+        "ru": "Продвинутые механиссеские компоненты"
       },
       "description": {
         "en": "Used to craft advanced weapons. Can be recycled into crafting materials. Used to craft: Torrente, Venator, Osprey, Renegade, Bettina",
@@ -3472,7 +3472,7 @@
         "Reduced Reload Time": {
           "value": "40%",
           "en": "Reduced Reload Time",
-          "ru": "Сокращённое врем�� перезарядки"
+          "ru": "Сокращённое времсс перезарядки"
         },
         "Stability": {
           "value": 45.9,
@@ -3700,7 +3700,7 @@
       "id": "buried_city_hospital_key",
       "name": {
         "en": "Buried City Hospital Key",
-        "ru": "Ключ от бол��ницы Погребённого города"
+        "ru": "Ключ от болссницы Погребённого города"
       },
       "description": {
         "en": "A key to areas within the Buried City Hospital.",
@@ -4238,7 +4238,7 @@
       "id": "canto_i",
       "name": {
         "en": "Canto I",
-        "ru": "Canto I"
+        "ru": "Канто I"
       },
       "description": {
         "en": "Fully automatic submachine gun with a larger caliber.",
@@ -4271,7 +4271,7 @@
       "id": "canto_ii",
       "name": {
         "en": "Canto II",
-        "ru": "Canto II"
+        "ru": "Канто II"
       },
       "description": {
         "en": "Fully automatic submachine gun with a larger caliber.",
@@ -4300,7 +4300,7 @@
       "id": "canto_iii",
       "name": {
         "en": "Canto III",
-        "ru": "Canto III"
+        "ru": "Канто III"
       },
       "description": {
         "en": "Fully automatic submachine gun with a larger caliber.",
@@ -4329,7 +4329,7 @@
       "id": "canto_iv",
       "name": {
         "en": "Canto IV",
-        "ru": "Canto IV"
+        "ru": "Канто IV"
       },
       "description": {
         "en": "Fully automatic submachine gun with a larger caliber.",
@@ -6009,7 +6009,7 @@
       "id": "dolabra",
       "name": {
         "en": "Dolabra",
-        "ru": "Dolabra"
+        "ru": "Долабра"
       },
       "description": {
         "en": "An experimental weapon that can either fire a wide short range blast, or be focused to fire a tight medium range beam of heat.",
@@ -15963,7 +15963,7 @@
       },
       "description": {
         "en": "Unlocks a door in one of the Crane Houses at Riven Tides.",
-        "ru": "Открывает дверь в одном из кр��новых домиков в Riven Tides."
+        "ru": "Открывает дверь в одном из крссновых домиков в Riven Tides."
       },
       "type": "Key",
       "rarity": "Common",
@@ -21213,7 +21213,7 @@
       "id": "vaporizer_regulator",
       "name": {
         "en": "Vaporizer Regulator",
-        "ru": "Vaporizer Regulator"
+        "ru": "Регулятор испепелителя"
       },
       "description": {
         "en": "",

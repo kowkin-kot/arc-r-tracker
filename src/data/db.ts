@@ -205,17 +205,6 @@ export const questsList: Quest[] = [
     "map": []
   },
   {
-    "id": "off_the_radar",
-    "nameEn": "Off The Radar",
-    "nameRu": "Уход в тень",
-    "trader": "Shani",
-    "map": [
-      "buried_city",
-      "the_spaceport",
-      "dam_battlegrounds"
-    ]
-  },
-  {
     "id": "on_deaf_ears",
     "nameEn": "On Deaf Ears",
     "nameRu": "Проблемы со слухом",
@@ -254,13 +243,6 @@ export const questsList: Quest[] = [
     ]
   },
   {
-    "id": "picking_up_the_pieces",
-    "nameEn": "Picking Up The Pieces",
-    "nameRu": "Сбор по крупицам",
-    "trader": "Shani",
-    "map": []
-  },
-  {
     "id": "safe_harbor",
     "nameEn": "Safe Harbor",
     "nameRu": "Тихая гавань",
@@ -293,7 +275,7 @@ export const questsList: Quest[] = [
     ]
   },
   {
-    "id": "ss1",
+    "id": "picking_up_the_pieces",
     "nameEn": "Picking Up The Pieces",
     "nameRu": "Сбор по крупицам",
     "trader": "Shani",
@@ -793,12 +775,12 @@ export const questsList: Quest[] = [
   {
     "id": "ss3",
     "nameEn": "Trash Into Treasure",
-    "nameRu": "И хлам богатство",
+    "nameRu": "Вторая жизнь мусора",
     "trader": "Shani",
     "map": []
   },
   {
-    "id": "ss4",
+    "id": "off_the_radar",
     "nameEn": "Off The Radar",
     "nameRu": "Уход в тень",
     "trader": "Shani",
@@ -953,118 +935,48 @@ export const projectsList: Project[] = [
     "nameRu": "Витрина для трофеев",
     "phases": [
       {
-        "nameEn": "Roaming Threats",
-        "nameRu": "Блуждающие противники",
-        "phase": 1,
+        "nameEn": "Roaming Threats", "nameRu": "Блуждающие противники", "phase": 1,
         "requirements": [
-          {
-            "itemId": "rusted_bolts",
-            "quantity": 3
-          },
-          {
-            "itemId": "pop_trigger",
-            "quantity": 15
-          },
-          {
-            "itemId": "tick_pod",
-            "quantity": 15
-          },
-          {
-            "itemId": "surveyor_vault",
-            "quantity": 5
-          }
+          { "itemId": "rusted_bolts", "quantity": 3 },
+          { "itemId": "pop_trigger", "quantity": 15 },
+          { "itemId": "tick_pod", "quantity": 15 },
+          { "itemId": "surveyor_vault", "quantity": 5 }
         ]
       },
       {
-        "nameEn": "Soaring Menaces",
-        "nameRu": "Парящие угрозы",
-        "phase": 2,
+        "nameEn": "Soaring Menaces", "nameRu": "Парящие угрозы", "phase": 2,
         "requirements": [
-          {
-            "itemId": "spotter_relay",
-            "quantity": 10
-          },
-          {
-            "itemId": "expired_respirator",
-            "quantity": 3
-          },
-          {
-            "itemId": "wasp_driver",
-            "quantity": 20
-          },
-          {
-            "itemId": "hornet_driver",
-            "quantity": 15
-          }
+          { "itemId": "spotter_relay", "quantity": 10 },
+          { "itemId": "expired_respirator", "quantity": 3 },
+          { "itemId": "wasp_driver", "quantity": 20 },
+          { "itemId": "hornet_driver", "quantity": 15 }
         ]
       },
       {
-        "nameEn": "Ferocious Foes",
-        "nameRu": "Свирепые враги",
-        "phase": 3,
+        "nameEn": "Ferocious Foes", "nameRu": "Свирепые враги", "phase": 3,
         "requirements": [
-          {
-            "itemId": "arc_performance_steel",
-            "quantity": 10
-          },
-          {
-            "itemId": "shredder_gyro",
-            "quantity": 5
-          },
-          {
-            "itemId": "leaper_pulse_unit",
-            "quantity": 10
-          },
-          {
-            "itemId": "bastion_cell",
-            "quantity": 5
-          }
+          { "itemId": "arc_performance_steel", "quantity": 10 },
+          { "itemId": "shredder_gyro", "quantity": 5 },
+          { "itemId": "leaper_pulse_unit", "quantity": 10 },
+          { "itemId": "bastion_cell", "quantity": 5 }
         ]
       },
       {
-        "nameEn": "Dominant Dangers",
-        "nameRu": "Доминирующие опасности",
-        "phase": 4,
+        "nameEn": "Dominant Dangers", "nameRu": "Доминирующие опасности", "phase": 4,
         "requirements": [
-          {
-            "itemId": "arc_synthetic_resin",
-            "quantity": 10
-          },
-          {
-            "itemId": "magnetic_accelerator",
-            "quantity": 10
-          },
-          {
-            "itemId": "rocketeer_driver",
-            "quantity": 8
-          },
-          {
-            "itemId": "queen_reactor",
-            "quantity": 3
-          }
+          { "itemId": "arc_synthetic_resin", "quantity": 10 },
+          { "itemId": "magnetic_accelerator", "quantity": 10 },
+          { "itemId": "rocketeer_driver", "quantity": 8 },
+          { "itemId": "queen_reactor", "quantity": 3 }
         ]
       },
       {
-        "nameEn": "Imposing Behemoths",
-        "nameRu": "Грандиозные тяжелове��ы",
-        "phase": 5,
+        "nameEn": "Imposing Behemoths", "nameRu": "Грандиозные тяжеловессы", "phase": 5,
         "requirements": [
-          {
-            "itemId": "exodus_modules",
-            "quantity": 5
-          },
-          {
-            "itemId": "geiger_counter",
-            "quantity": 3
-          },
-          {
-            "itemId": "bombardier_cell",
-            "quantity": 8
-          },
-          {
-            "itemId": "matriarch_reactor",
-            "quantity": 3
-          }
+          { "itemId": "exodus_modules", "quantity": 5 },
+          { "itemId": "geiger_counter", "quantity": 3 },
+          { "itemId": "bombardier_cell", "quantity": 8 },
+          { "itemId": "matriarch_reactor", "quantity": 3 }
         ]
       }
     ]
@@ -1075,331 +987,43 @@ export const projectsList: Project[] = [
     "nameRu": "Проект экспедиции (Экспедиция 1)",
     "phases": [
       {
-        "nameEn": "Foundation",
-        "nameRu": "Основа",
-        "phase": 1,
+        "nameEn": "Foundation", "nameRu": "Основа", "phase": 1,
         "requirements": [
-          {
-            "itemId": "metal_parts",
-            "quantity": 150
-          },
-          {
-            "itemId": "rubber_parts",
-            "quantity": 200
-          },
-          {
-            "itemId": "arc_alloy",
-            "quantity": 80
-          },
-          {
-            "itemId": "steel_spring",
-            "quantity": 15
-          }
+          { "itemId": "metal_parts", "quantity": 150 },
+          { "itemId": "rubber_parts", "quantity": 200 },
+          { "itemId": "arc_alloy", "quantity": 80 },
+          { "itemId": "steel_spring", "quantity": 15 }
         ]
       },
       {
-        "nameEn": "Core Systems",
-        "nameRu": "Базовые системы",
-        "phase": 2,
+        "nameEn": "Core Systems", "nameRu": "Базовые системы", "phase": 2,
         "requirements": [
-          {
-            "itemId": "durable_cloth",
-            "quantity": 35
-          },
-          {
-            "itemId": "wires",
-            "quantity": 30
-          },
-          {
-            "itemId": "electrical_components",
-            "quantity": 30
-          },
-          {
-            "itemId": "cooling_fan",
-            "quantity": 5
-          }
+          { "itemId": "durable_cloth", "quantity": 35 },
+          { "itemId": "wires", "quantity": 30 },
+          { "itemId": "electrical_components", "quantity": 30 },
+          { "itemId": "cooling_fan", "quantity": 5 }
         ]
       },
       {
-        "nameEn": "Framework",
-        "nameRu": "Каркас",
-        "phase": 3,
+        "nameEn": "Framework", "nameRu": "Каркас", "phase": 3,
         "requirements": [
-          {
-            "itemId": "light_bulb",
-            "quantity": 5
-          },
-          {
-            "itemId": "battery",
-            "quantity": 30
-          },
-          {
-            "itemId": "sensors",
-            "quantity": 20
-          },
-          {
-            "itemId": "exodus_modules",
-            "quantity": 1
-          }
+          { "itemId": "light_bulb", "quantity": 5 },
+          { "itemId": "battery", "quantity": 30 },
+          { "itemId": "sensors", "quantity": 20 },
+          { "itemId": "exodus_modules", "quantity": 1 }
         ]
       },
       {
-        "nameEn": "Outfitting",
-        "nameRu": "Обустройство",
-        "phase": 4,
+        "nameEn": "Outfitting", "nameRu": "Обустройство", "phase": 4,
         "requirements": [
-          {
-            "itemId": "humidifier",
-            "quantity": 5
-          },
-          {
-            "itemId": "advanced_electrical_components",
-            "quantity": 5
-          },
-          {
-            "itemId": "magnetic_accelerator",
-            "quantity": 3
-          },
-          {
-            "itemId": "leaper_pulse_unit",
-            "quantity": 3
-          }
+          { "itemId": "humidifier", "quantity": 5 },
+          { "itemId": "advanced_electrical_components", "quantity": 5 },
+          { "itemId": "magnetic_accelerator", "quantity": 3 },
+          { "itemId": "leaper_pulse_unit", "quantity": 3 }
         ]
       },
-      {
-        "nameEn": "Load Stage",
-        "nameRu": "Этап загрузки",
-        "phase": 5,
-        "requirements": []
-      },
-      {
-        "nameEn": "Departure",
-        "nameRu": "Отправление",
-        "phase": 6,
-        "requirements": []
-      }
-    ]
-  },
-  {
-    "id": "expedition_project",
-    "nameEn": "Expedition Project (Expedition 2)",
-    "nameRu": "Проект экспедиции (Экспедиция 2)",
-    "phases": [
-      {
-        "nameEn": "Foundation",
-        "nameRu": "Основа",
-        "phase": 1,
-        "requirements": [
-          {
-            "itemId": "metal_parts",
-            "quantity": 150
-          },
-          {
-            "itemId": "plastic_parts",
-            "quantity": 200
-          },
-          {
-            "itemId": "arc_alloy",
-            "quantity": 80
-          },
-          {
-            "itemId": "steel_spring",
-            "quantity": 15
-          }
-        ]
-      },
-      {
-        "nameEn": "Core Systems",
-        "nameRu": "Базовые системы",
-        "phase": 2,
-        "requirements": [
-          {
-            "itemId": "durable_cloth",
-            "quantity": 35
-          },
-          {
-            "itemId": "wires",
-            "quantity": 25
-          },
-          {
-            "itemId": "electrical_components",
-            "quantity": 20
-          },
-          {
-            "itemId": "cooling_coil",
-            "quantity": 4
-          }
-        ]
-      },
-      {
-        "nameEn": "Framework",
-        "nameRu": "Каркас",
-        "phase": 3,
-        "requirements": [
-          {
-            "itemId": "light_bulb",
-            "quantity": 4
-          },
-          {
-            "itemId": "battery",
-            "quantity": 30
-          },
-          {
-            "itemId": "shredder_gyro",
-            "quantity": 10
-          },
-          {
-            "itemId": "exodus_modules",
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "nameEn": "Outfitting",
-        "nameRu": "Обустройство",
-        "phase": 4,
-        "requirements": [
-          {
-            "itemId": "frequency_modulation_box",
-            "quantity": 5
-          },
-          {
-            "itemId": "advanced_electrical_components",
-            "quantity": 5
-          },
-          {
-            "itemId": "ion_sputter",
-            "quantity": 3
-          },
-          {
-            "itemId": "leaper_pulse_unit",
-            "quantity": 3
-          }
-        ]
-      },
-      {
-        "nameEn": "Load Stage",
-        "nameRu": "Этап загрузки",
-        "phase": 5,
-        "requirements": []
-      },
-      {
-        "nameEn": "Departure",
-        "nameRu": "Отправление",
-        "phase": 6,
-        "requirements": []
-      }
-    ]
-  },
-  {
-    "id": "expedition_project_s3",
-    "nameEn": "Expedition (Expedition 3)",
-    "nameRu": "Экспедиция (Экспедиция 3)",
-    "phases": [
-      {
-        "nameEn": "Foundation",
-        "nameRu": "Основа",
-        "phase": 1,
-        "requirements": [
-          {
-            "itemId": "metal_parts",
-            "quantity": 150
-          },
-          {
-            "itemId": "chemicals",
-            "quantity": 100
-          },
-          {
-            "itemId": "arc_alloy",
-            "quantity": 80
-          },
-          {
-            "itemId": "steel_spring",
-            "quantity": 15
-          }
-        ]
-      },
-      {
-        "nameEn": "Core Systems",
-        "nameRu": "Базовые системы",
-        "phase": 2,
-        "requirements": [
-          {
-            "itemId": "durable_cloth",
-            "quantity": 30
-          },
-          {
-            "itemId": "wires",
-            "quantity": 25
-          },
-          {
-            "itemId": "electrical_components",
-            "quantity": 20
-          },
-          {
-            "itemId": "industrial_charger",
-            "quantity": 3
-          }
-        ]
-      },
-      {
-        "nameEn": "Framework",
-        "nameRu": "Каркас",
-        "phase": 3,
-        "requirements": [
-          {
-            "itemId": "coffee_pot",
-            "quantity": 1
-          },
-          {
-            "itemId": "battery",
-            "quantity": 25
-          },
-          {
-            "itemId": "firefly_burner",
-            "quantity": 5
-          },
-          {
-            "itemId": "exodus_modules",
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "nameEn": "Outfitting",
-        "nameRu": "Обустройство",
-        "phase": 4,
-        "requirements": [
-          {
-            "itemId": "broken_guidance_system",
-            "quantity": 1
-          },
-          {
-            "itemId": "advanced_electrical_components",
-            "quantity": 5
-          },
-          {
-            "itemId": "breathtaking_snow_globe",
-            "quantity": 3
-          },
-          {
-            "itemId": "bombardier_cell",
-            "quantity": 2
-          }
-        ]
-      },
-      {
-        "nameEn": "Load Stage",
-        "nameRu": "Этап загрузки",
-        "phase": 5,
-        "requirements": []
-      },
-      {
-        "nameEn": "Departure",
-        "nameRu": "Отправление",
-        "phase": 6,
-        "requirements": []
-      }
+      { "nameEn": "Load Stage", "nameRu": "Этап загрузки", "phase": 5, "requirements": [] },
+      { "nameEn": "Departure", "nameRu": "Отправление", "phase": 6, "requirements": [] }
     ]
   },
   {
@@ -1407,533 +1031,41 @@ export const projectsList: Project[] = [
     "nameEn": "Avian Alarm",
     "nameRu": "Пернатая тревога",
     "phases": [
+      { "nameEn": "Initial Flock Intake", "nameRu": "Первоначальный сбор стаи", "phase": 1, "requirements": [] },
       {
-        "nameEn": "Initial Flock Intake",
-        "nameRu": "Первоначальный сбор стаи",
-        "phase": 1,
-        "requirements": []
-      },
-      {
-        "nameEn": "Preliminary Signal Birds",
-        "nameRu": "Пернатое предупреждение",
-        "phase": 2,
+        "nameEn": "Preliminary Signal Birds", "nameRu": "Пернатое предупреждение", "phase": 2,
         "requirements": [
-          {
-            "itemId": "tick_pod",
-            "quantity": 7
-          },
-          {
-            "itemId": "canister",
-            "quantity": 20
-          },
-          {
-            "itemId": "moss",
-            "quantity": 12
-          },
-          {
-            "itemId": "twilight_compass_ship_model",
-            "quantity": 5
-          }
+          { "itemId": "tick_pod", "quantity": 7 },
+          { "itemId": "canister", "quantity": 20 },
+          { "itemId": "moss", "quantity": 12 },
+          { "itemId": "twilight_compass_ship_model", "quantity": 5 }
         ]
       },
       {
-        "nameEn": "Secondary Validation Birds",
-        "nameRu": "Дополнительное пернатое подтверждение",
-        "phase": 3,
+        "nameEn": "Secondary Validation Birds", "nameRu": "Дополнительное пернатое подтверждение", "phase": 3,
         "requirements": [
-          {
-            "itemId": "comet_igniter",
-            "quantity": 3
-          },
-          {
-            "itemId": "fertilizer",
-            "quantity": 10
-          },
-          {
-            "itemId": "rusted_tools",
-            "quantity": 8
-          },
-          {
-            "itemId": "velocity_ship_model",
-            "quantity": 5
-          }
+          { "itemId": "comet_igniter", "quantity": 3 },
+          { "itemId": "fertilizer", "quantity": 10 },
+          { "itemId": "rusted_tools", "quantity": 8 },
+          { "itemId": "velocity_ship_model", "quantity": 5 }
         ]
       },
       {
-        "nameEn": "Heightened Alert Birds",
-        "nameRu": "Повышенная пернатая готовность",
-        "phase": 4,
+        "nameEn": "Heightened Alert Birds", "nameRu": "Повышенная пернатая готовность", "phase": 4,
         "requirements": [
-          {
-            "itemId": "vaporizer_regulator",
-            "quantity": 1
-          },
-          {
-            "itemId": "water_filter",
-            "quantity": 3
-          },
-          {
-            "itemId": "agave",
-            "quantity": 8
-          },
-          {
-            "itemId": "sirena_dorata_ship_model",
-            "quantity": 5
-          }
+          { "itemId": "vaporizer_regulator", "quantity": 1 },
+          { "itemId": "water_filter", "quantity": 3 },
+          { "itemId": "agave", "quantity": 8 },
+          { "itemId": "sirena_dorata_ship_model", "quantity": 5 }
         ]
       },
       {
-        "nameEn": "Critical Warning Birds",
-        "nameRu": "Чрезвычайная пернатая ситуация",
-        "phase": 5,
+        "nameEn": "Critical Warning Birds", "nameRu": "Чрезвычайная пернатая ситуация", "phase": 5,
         "requirements": [
-          {
-            "itemId": "monolith_part",
-            "quantity": 2
-          },
-          {
-            "itemId": "red_coral_jewelry",
-            "quantity": 3
-          },
-          {
-            "itemId": "roots",
-            "quantity": 4
-          },
-          {
-            "itemId": "leviathans_crown_ship_model",
-            "quantity": 1
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "expedition_project_s4",
-    "nameEn": "Expedition (Expedition 4)",
-    "nameRu": "Экспедиция (Экспедиция 4)",
-    "phases": [
-      {
-        "nameEn": "Foundation",
-        "nameRu": "Основа",
-        "phase": 1,
-        "requirements": [
-          {
-            "itemId": "metal_parts",
-            "quantity": 150
-          },
-          {
-            "itemId": "chemicals",
-            "quantity": 100
-          },
-          {
-            "itemId": "arc_alloy",
-            "quantity": 80
-          },
-          {
-            "itemId": "canister",
-            "quantity": 15
-          }
-        ]
-      },
-      {
-        "nameEn": "Core Systems",
-        "nameRu": "Базовые системы",
-        "phase": 2,
-        "requirements": [
-          {
-            "itemId": "durable_cloth",
-            "quantity": 30
-          },
-          {
-            "itemId": "oil",
-            "quantity": 25
-          },
-          {
-            "itemId": "electrical_components",
-            "quantity": 20
-          },
-          {
-            "itemId": "industrial_charger",
-            "quantity": 3
-          }
-        ]
-      },
-      {
-        "nameEn": "Framework",
-        "nameRu": "Каркас",
-        "phase": 3,
-        "requirements": [
-          {
-            "itemId": "arc_motion_core",
-            "quantity": 20
-          },
-          {
-            "itemId": "speaker_component",
-            "quantity": 15
-          },
-          {
-            "itemId": "monolith_part",
-            "quantity": 5
-          },
-          {
-            "itemId": "exodus_modules",
-            "quantity": 2
-          }
-        ]
-      },
-      {
-        "nameEn": "Outfitting",
-        "nameRu": "Обустройство",
-        "phase": 4,
-        "requirements": [
-          {
-            "itemId": "portable_tv",
-            "quantity": 1
-          },
-          {
-            "itemId": "advanced_electrical_components",
-            "quantity": 5
-          },
-          {
-            "itemId": "sirena_dorata_ship_model",
-            "quantity": 2
-          },
-          {
-            "itemId": "vaporizer_regulator",
-            "quantity": 3
-          }
-        ]
-      },
-      {
-        "nameEn": "Load Stage",
-        "nameRu": "Этап загрузки",
-        "phase": 5,
-        "requirements": []
-      },
-      {
-        "nameEn": "Departure",
-        "nameRu": "Отправление",
-        "phase": 6,
-        "requirements": []
-      }
-    ]
-  },
-  {
-    "id": "flickering_flames_project",
-    "nameEn": "Flickering Flames",
-    "nameRu": "Мерцающее пламя",
-    "phases": [
-      {
-        "nameEn": "Candlelight",
-        "nameRu": "Свет свечи",
-        "phase": 1,
-        "requirements": [
-          {
-            "itemId": "empty_wine_bottle",
-            "quantity": 1
-          },
-          {
-            "itemId": "plastic_parts",
-            "quantity": 25
-          },
-          {
-            "itemId": "durable_cloth",
-            "quantity": 5
-          },
-          {
-            "itemId": "candleberries",
-            "quantity": 20
-          }
-        ]
-      },
-      {
-        "nameEn": "Decorations",
-        "nameRu": "Украшения",
-        "phase": 2,
-        "requirements": [
-          {
-            "itemId": "candle_holder",
-            "quantity": 3
-          },
-          {
-            "itemId": "light_bulb",
-            "quantity": 3
-          },
-          {
-            "itemId": "industrial_battery",
-            "quantity": 1
-          },
-          {
-            "itemId": "candleberries",
-            "quantity": 50
-          }
-        ]
-      },
-      {
-        "nameEn": "Presents",
-        "nameRu": "Подарки",
-        "phase": 3,
-        "requirements": [
-          {
-            "itemId": "snap_blast_grenade",
-            "quantity": 5
-          },
-          {
-            "itemId": "duct_tape",
-            "quantity": 10
-          },
-          {
-            "itemId": "film_reel",
-            "quantity": 1
-          },
-          {
-            "itemId": "candleberries",
-            "quantity": 60
-          }
-        ]
-      },
-      {
-        "nameEn": "Beverages",
-        "nameRu": "Напитки",
-        "phase": 4,
-        "requirements": [
-          {
-            "itemId": "coffee_pot",
-            "quantity": 2
-          },
-          {
-            "itemId": "fireball_burner",
-            "quantity": 10
-          },
-          {
-            "itemId": "water_filter",
-            "quantity": 2
-          },
-          {
-            "itemId": "candleberries",
-            "quantity": 60
-          }
-        ]
-      },
-      {
-        "nameEn": "Meals",
-        "nameRu": "Блюда",
-        "phase": 5,
-        "requirements": [
-          {
-            "itemId": "mushroom",
-            "quantity": 7
-          },
-          {
-            "itemId": "frying_pan",
-            "quantity": 2
-          },
-          {
-            "itemId": "music_album",
-            "quantity": 2
-          },
-          {
-            "itemId": "candleberries",
-            "quantity": 70
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "weather_monitor_system_project",
-    "nameEn": "Weather Monitor System",
-    "nameRu": "Система наблюдения за погодой",
-    "phases": [
-      {
-        "nameEn": "Atmospheric pressure",
-        "nameRu": "Атмосферное давление",
-        "phase": 1,
-        "requirements": [
-          {
-            "itemId": "plastic_parts",
-            "quantity": 25
-          },
-          {
-            "itemId": "metal_parts",
-            "quantity": 15
-          },
-          {
-            "itemId": "arc_alloy",
-            "quantity": 5
-          },
-          {
-            "itemId": "oil",
-            "quantity": 3
-          }
-        ]
-      },
-      {
-        "nameEn": "Sunlight",
-        "nameRu": "Солнечный свет",
-        "phase": 2,
-        "requirements": [
-          {
-            "itemId": "snitch_scanner",
-            "quantity": 1
-          },
-          {
-            "itemId": "wires",
-            "quantity": 3
-          },
-          {
-            "itemId": "sensors",
-            "quantity": 3
-          },
-          {
-            "itemId": "comet_igniter",
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "nameEn": "Precipitation",
-        "nameRu": "Осадки",
-        "phase": 3,
-        "requirements": [
-          {
-            "itemId": "arc_powercell",
-            "quantity": 5
-          },
-          {
-            "itemId": "canister",
-            "quantity": 5
-          },
-          {
-            "itemId": "steel_spring",
-            "quantity": 5
-          },
-          {
-            "itemId": "fine_wristwatch",
-            "quantity": 1
-          }
-        ]
-      },
-      {
-        "nameEn": "Humidity",
-        "nameRu": "Влажность",
-        "phase": 4,
-        "requirements": [
-          {
-            "itemId": "duct_tape",
-            "quantity": 10
-          },
-          {
-            "itemId": "rusted_bolts",
-            "quantity": 3
-          },
-          {
-            "itemId": "water_pump",
-            "quantity": 1
-          },
-          {
-            "itemId": "wasp_driver",
-            "quantity": 3
-          }
-        ]
-      },
-      {
-        "nameEn": "Temperature",
-        "nameRu": "Температура",
-        "phase": 5,
-        "requirements": [
-          {
-            "itemId": "camera_lens",
-            "quantity": 3
-          },
-          {
-            "itemId": "damaged_heat_sink",
-            "quantity": 1
-          },
-          {
-            "itemId": "firefly_burner",
-            "quantity": 1
-          },
-          {
-            "itemId": "voltage_converter",
-            "quantity": 3
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "high_gain_antenna_project",
-    "nameEn": "High-Gain Antenna",
-    "nameRu": "Антенна с высоким коэффициентом усиления",
-    "phases": [
-      {
-        "nameEn": "Sturdy Base",
-        "nameRu": "Крепкое основание",
-        "phase": 1,
-        "requirements": [
-          {
-            "itemId": "arc_alloy",
-            "quantity": 50
-          },
-          {
-            "itemId": "arc_flex_rubber",
-            "quantity": 10
-          },
-          {
-            "itemId": "arc_performance_steel",
-            "quantity": 10
-          },
-          {
-            "itemId": "advanced_arc_powercell",
-            "quantity": 15
-          }
-        ]
-      },
-      {
-        "nameEn": "Data Logger",
-        "nameRu": "Регистратор данных",
-        "phase": 2,
-        "requirements": [
-          {
-            "itemId": "arc_coolant",
-            "quantity": 15
-          },
-          {
-            "itemId": "arc_thermo_lining",
-            "quantity": 15
-          },
-          {
-            "itemId": "vaporizer_regulator",
-            "quantity": 4
-          },
-          {
-            "itemId": "assessor_matrix",
-            "quantity": 6
-          }
-        ]
-      },
-      {
-        "nameEn": "Parabolic Dish",
-        "nameRu": "Параболическая антенна",
-        "phase": 3,
-        "requirements": [
-          {
-            "itemId": "surveyor_vault",
-            "quantity": 10
-          },
-          {
-            "itemId": "arc_synthetic_resin",
-            "quantity": 20
-          },
-          {
-            "itemId": "vaporizer_regulator",
-            "quantity": 15
-          },
-          {
-            "itemId": "assessor_matrix",
-            "quantity": 18
-          }
+          { "itemId": "monolith_part", "quantity": 2 },
+          { "itemId": "red_coral_jewelry", "quantity": 3 },
+          { "itemId": "roots", "quantity": 4 },
+          { "itemId": "leviathans_crown_ship_model", "quantity": 1 }
         ]
       }
     ]
@@ -1941,7 +1073,7 @@ export const projectsList: Project[] = [
 ];
 
 export const itemsList: Item[] = [
-  {
+{
     "id": "acoustic_guitar",
     "name": "Acoustic Guitar",
     "ruName": "Акустическая гитара",
@@ -1988,8 +1120,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/advanced_arc_powercell.png"
+    ]
   },
   {
     "id": "advanced_electrical_components",
@@ -2020,8 +1151,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/advanced_electrical_components.png"
+    ]
   },
   {
     "id": "advanced_mechanical_components",
@@ -2055,8 +1185,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/agave.png"
+    ]
   },
   {
     "id": "agave_juice",
@@ -2339,8 +1468,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_alloy.png"
+    ]
   },
   {
     "id": "arc_circuitry",
@@ -2374,8 +1502,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_coolant.png"
+    ]
   },
   {
     "id": "arc_flex_rubber",
@@ -2394,8 +1521,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_flex_rubber.png"
+    ]
   },
   {
     "id": "arc_motion_core",
@@ -2414,8 +1540,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_motion_core.png"
+    ]
   },
   {
     "id": "arc_performance_steel",
@@ -2438,8 +1563,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_performance_steel.png"
+    ]
   },
   {
     "id": "arc_powercell",
@@ -2460,8 +1584,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_powercell.png"
+    ]
   },
   {
     "id": "arc_synthetic_resin",
@@ -2484,8 +1607,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_synthetic_resin.png"
+    ]
   },
   {
     "id": "arc_thermo_lining",
@@ -2504,8 +1626,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/arc_thermo_lining.png"
+    ]
   },
   {
     "id": "arpeggio_i",
@@ -2588,8 +1709,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/assessor_matrix.png"
+    ]
   },
   {
     "id": "assorted_seeds",
@@ -2655,8 +1775,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/bastion_cell.png"
+    ]
   },
   {
     "id": "battery",
@@ -2685,8 +1804,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s3",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/battery.png"
+    ]
   },
   {
     "id": "bettina_i",
@@ -2983,8 +2101,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s3",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/bombardier_cell.png"
+    ]
   },
   {
     "id": "breathtaking_snow_globe",
@@ -3003,8 +2120,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s3",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/breathtaking_snow_globe.png"
+    ]
   },
   {
     "id": "broken_flashlight",
@@ -3038,8 +2154,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s3",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/broken_guidance_system.png"
+    ]
   },
   {
     "id": "broken_handheld_radio",
@@ -3074,7 +2189,7 @@ export const itemsList: Item[] = [
   {
     "id": "buried_city_hospital_key",
     "name": "Buried City Hospital Key",
-    "ruName": "Ключ от бол��ницы Погребённого города",
+    "ruName": "Ключ от болссницы Погребённого города",
     "rarity": "Rare",
     "type": "Ключ доступа",
     "usedFor": "",
@@ -3238,8 +2353,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/camera_lens.png"
+    ]
   },
   {
     "id": "candle_holder",
@@ -3258,8 +2372,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/candle_holder.png"
+    ]
   },
   {
     "id": "candleberries",
@@ -3294,8 +2407,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/candleberries.png"
+    ]
   },
   {
     "id": "canister",
@@ -3322,8 +2434,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/canister.png"
+    ]
   },
   {
     "id": "canto_i",
@@ -3439,8 +2550,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/chemicals.png"
+    ]
   },
   {
     "id": "coffee_pot",
@@ -3463,8 +2573,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/coffee_pot.png"
+    ]
   },
   {
     "id": "combat_mk1",
@@ -3549,8 +2658,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/comet_igniter.png"
+    ]
   },
   {
     "id": "compensator_i",
@@ -3644,8 +2752,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/cooling_coil.png"
+    ]
   },
   {
     "id": "cooling_fan",
@@ -3664,8 +2771,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s1",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/cooling_fan.png"
+    ]
   },
   {
     "id": "cracked_bioscanner",
@@ -3879,8 +2985,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/damaged_heat_sink.png"
+    ]
   },
   {
     "id": "damaged_hornet_driver",
@@ -4175,8 +3280,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/duct_tape.png"
+    ]
   },
   {
     "id": "durable_cloth",
@@ -4213,8 +3317,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/durable_cloth.png"
+    ]
   },
   {
     "id": "dusty_film_reel",
@@ -4262,8 +3365,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/electrical_components.png"
+    ]
   },
   {
     "id": "empty_wine_bottle",
@@ -4282,8 +3384,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/empty_wine_bottle.png"
+    ]
   },
   {
     "id": "energy_clip",
@@ -4382,8 +3483,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/exodus_modules.png"
+    ]
   },
   {
     "id": "experimental_seed_sample",
@@ -4434,8 +3534,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/expired_respirator.png"
+    ]
   },
   {
     "id": "explosive_compound",
@@ -4739,8 +3838,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/fertilizer.png"
+    ]
   },
   {
     "id": "film_reel",
@@ -4759,8 +3857,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/film_reel.png"
+    ]
   },
   {
     "id": "fine_wristwatch",
@@ -4779,8 +3876,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/fine_wristwatch.png"
+    ]
   },
   {
     "id": "fireball_burner",
@@ -4801,8 +3897,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/fireball_burner.png"
+    ]
   },
   {
     "id": "firecracker",
@@ -4842,8 +3937,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/firefly_burner.png"
+    ]
   },
   {
     "id": "fireworks_box",
@@ -5020,8 +4114,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/frequency_modulation_box.png"
+    ]
   },
   {
     "id": "fried_motherboard",
@@ -5070,8 +4163,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/frying_pan.png"
+    ]
   },
   {
     "id": "garlic_press",
@@ -5150,8 +4242,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/geiger_counter.png"
+    ]
   },
   {
     "id": "gentle_duck",
@@ -5385,8 +4476,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/hornet_driver.png"
+    ]
   },
   {
     "id": "household_cleaner",
@@ -5480,8 +4570,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s1",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/humidifier.png"
+    ]
   },
   {
     "id": "ice_cream_scooper",
@@ -5590,8 +4679,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/industrial_battery.png"
+    ]
   },
   {
     "id": "industrial_charger",
@@ -5614,8 +4702,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/industrial_charger.png"
+    ]
   },
   {
     "id": "industrial_magnet",
@@ -5651,8 +4738,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/ion_sputter.png"
+    ]
   },
   {
     "id": "jolt_mine",
@@ -5831,8 +4917,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/leaper_pulse_unit.png"
+    ]
   },
   {
     "id": "lemon",
@@ -5866,8 +4951,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/leviathans_crown_ship_model.png"
+    ]
   },
   {
     "id": "library_book",
@@ -5941,8 +5025,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/light_bulb.png"
+    ]
   },
   {
     "id": "light_gun_parts",
@@ -6160,8 +5243,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s1",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/magnetic_accelerator.png"
+    ]
   },
   {
     "id": "magnetron",
@@ -6229,8 +5311,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/matriarch_reactor.png"
+    ]
   },
   {
     "id": "mechanical_components",
@@ -6340,8 +5421,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/metal_parts.png"
+    ]
   },
   {
     "id": "microscope",
@@ -6422,8 +5502,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/moss.png"
+    ]
   },
   {
     "id": "motor",
@@ -6457,8 +5536,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/mushroom.png"
+    ]
   },
   {
     "id": "music_album",
@@ -6477,8 +5555,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/music_album.png"
+    ]
   },
   {
     "id": "music_box",
@@ -6623,8 +5700,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/oil.png"
+    ]
   },
   {
     "id": "old_world_books",
@@ -6818,8 +5894,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/plastic_parts.png"
+    ]
   },
   {
     "id": "playing_cards",
@@ -6868,8 +5943,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/pop_trigger.png"
+    ]
   },
   {
     "id": "portable_tv",
@@ -6890,8 +5964,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/portable_tv.png"
+    ]
   },
   {
     "id": "possibly_toxic_plant",
@@ -7092,8 +6165,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/queen_part.png"
+    ]
   },
   {
     "id": "radio",
@@ -7247,8 +6319,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/red_coral_jewelry.png"
+    ]
   },
   {
     "id": "red_light_stick",
@@ -7584,8 +6655,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/rocketeer_driver.png"
+    ]
   },
   {
     "id": "roots",
@@ -7604,8 +6674,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/roots.png"
+    ]
   },
   {
     "id": "rope",
@@ -7701,8 +6770,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s1",
         "phase": 1
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/rubber_parts.png"
+    ]
   },
   {
     "id": "ruined_accordion",
@@ -7830,8 +6898,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/rusted_bolts.png"
+    ]
   },
   {
     "id": "rusted_gear",
@@ -7880,8 +6947,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/rusted_tools.png"
+    ]
   },
   {
     "id": "rusty_arc_steel",
@@ -7979,8 +7045,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/sensors.png"
+    ]
   },
   {
     "id": "sentinel_firing_core",
@@ -8153,8 +7218,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/shredder_gyro.png"
+    ]
   },
   {
     "id": "signal_amplifier",
@@ -8267,8 +7331,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/sirena_dorata_ship_model.png"
+    ]
   },
   {
     "id": "smoke_grenade",
@@ -8317,8 +7380,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/snap_blast_grenade.png"
+    ]
   },
   {
     "id": "snap_hook",
@@ -8354,8 +7416,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/snitch_scanner.png"
+    ]
   },
   {
     "id": "snowball",
@@ -8449,8 +7510,7 @@ export const itemsList: Item[] = [
         "projectId": "expedition_project_s4",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/speaker_component.png"
+    ]
   },
   {
     "id": "spectrometer",
@@ -8501,8 +7561,7 @@ export const itemsList: Item[] = [
         "projectId": "trophy_display_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/spotter_relay.png"
+    ]
   },
   {
     "id": "spring_cushion",
@@ -8625,8 +7684,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/steel_spring.png"
+    ]
   },
   {
     "id": "stella_montis_archives_key",
@@ -8816,8 +7874,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/surveyor_vault.png"
+    ]
   },
   {
     "id": "synthesized_fuel",
@@ -9097,8 +8154,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/tick_pod.png"
+    ]
   },
   {
     "id": "toaster",
@@ -9299,8 +8355,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/twilight_compass_ship_model.png"
+    ]
   },
   {
     "id": "unusable_weapon",
@@ -9346,8 +8401,7 @@ export const itemsList: Item[] = [
         "projectId": "high_gain_antenna_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/vaporizer_regulator.png"
+    ]
   },
   {
     "id": "vase",
@@ -9381,8 +8435,7 @@ export const itemsList: Item[] = [
         "projectId": "avian_alarm_project",
         "phase": 3
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/velocity_ship_model.png"
+    ]
   },
   {
     "id": "venator_i",
@@ -9566,8 +8619,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 5
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/voltage_converter.png"
+    ]
   },
   {
     "id": "vulcano_i",
@@ -9652,8 +8704,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/wasp_driver.png"
+    ]
   },
   {
     "id": "water_filter",
@@ -9676,8 +8727,7 @@ export const itemsList: Item[] = [
         "projectId": "flickering_flames_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/water_filter.png"
+    ]
   },
   {
     "id": "water_pump",
@@ -9696,8 +8746,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 4
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/water_pump.png"
+    ]
   },
   {
     "id": "white_flag",
@@ -9760,8 +8809,7 @@ export const itemsList: Item[] = [
         "projectId": "weather_monitor_system_project",
         "phase": 2
       }
-    ],
-    "image": "https://cdn.arctracker.io/items/wires.png"
+    ]
   },
   {
     "id": "wolfpack",
@@ -9794,7 +8842,7 @@ export const itemsList: Item[] = [
     "image": "https://cdn.arctracker.io/items/yellow_light_stick.png"
   },
   {
-    "id": "zipline",
+      "id": "zipline",
     "name": "Zipline",
     "ruName": "Зиплайн",
     "rarity": "Rare",
@@ -9807,11 +8855,10 @@ export const itemsList: Item[] = [
     "quests": [],
     "projects": [],
     "image": "https://cdn.arctracker.io/items/zipline.png"
-  }
-];
+  }];
 
 export const blueprintsList: Blueprint[] = [
-  {
+{
     "id": "angled_grip_ii_blueprint",
     "name": "Angled Grip II Blueprint",
     "ruName": "Чертеж — Угловая рукоятка II",
@@ -10551,5 +9598,4 @@ export const blueprintsList: Blueprint[] = [
   }
 ];
 
-
-export const skillsList: Skill[] = skillsData as unknown as Skill[];
+export const skillsList: Skill[] = skillsData as Skill[];

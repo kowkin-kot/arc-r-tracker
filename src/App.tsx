@@ -43,7 +43,24 @@ let didPrefetchJson = false;
 // Fetch large json early to avoid UI stutter on modal open
 if (typeof window !== 'undefined' && !didPrefetchJson) {
   didPrefetchJson = true;
-  fetch(import.meta.env.BASE_URL + 'arctracker_items.json').catch(e => console.error("Prefetch error", e));
+  (async () => {
+    const urls = [
+      'arctracker_items.json',
+      './arctracker_items.json',
+      '/arctracker_items.json',
+      import.meta.env.BASE_URL + 'arctracker_items.json'
+    ];
+    for (const url of urls) {
+      try {
+        const r = await fetch(url);
+        if (r.ok) {
+          break;
+        }
+      } catch (e) {
+        // quiet fallback
+      }
+    }
+  })();
 }
 
 export default function App() {
@@ -273,14 +290,6 @@ export default function App() {
                 </button>
               </h1>
             </motion.div>
-            <a 
-              href="https://arcraiders.wiki/wiki/Loot" 
-              target="_blank" 
-              rel="noreferrer"
-              className="hidden sm:flex items-center gap-2 text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg transition-colors"
-            >
-              Wiki Source <ExternalLink size={14} />
-            </a>
           </div>
         </header>
 
@@ -360,6 +369,7 @@ export default function App() {
                 completedProjectPhases={completedProjectPhases}
                 updateProjectPhase={updateProjectPhase}
                 search={search}
+                itemsOverrides={overrides}
               />
             </motion.div>
           )}

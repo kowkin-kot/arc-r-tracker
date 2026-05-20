@@ -76,13 +76,35 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose,
 
   React.useEffect(() => {
     if (!itemsJson) {
-      fetch(import.meta.env.BASE_URL + 'arctracker_items.json')
-        .then(r => r.json())
-        .then(d => {
-          cachedItemsJson = d;
-          setItemsJson(d);
-        })
-        .catch(e => console.error("Could not load item details", e));
+      async function loadItems() {
+        const urls = [
+          'arctracker_items.json',
+          './arctracker_items.json',
+          '/arctracker_items.json',
+          import.meta.env.BASE_URL + 'arctracker_items.json'
+        ];
+        
+        let lastError = null;
+        for (const url of urls) {
+          try {
+            const r = await fetch(url);
+            if (!r.ok) {
+              throw new Error(`HTTP status ${r.status}`);
+            }
+            const d = await r.json();
+            if (d) {
+              cachedItemsJson = d;
+              setItemsJson(d);
+              return;
+            }
+          } catch (err) {
+            lastError = err;
+          }
+        }
+        console.error("Could not load item details", lastError);
+      }
+      
+      loadItems();
     }
   }, [itemsJson]);
 

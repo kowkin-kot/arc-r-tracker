@@ -65,19 +65,6 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({
             <Mic size={20} className={isListening ? 'animate-bounce' : ''} />
           </button>
         )}
-        
-        <button
-          id="toggle-quests-btn"
-          onClick={() => setShowQuestsPanel(!showQuestsPanel)}
-          className={`flex-shrink-0 p-3.5 rounded-xl border transition-all flex items-center justify-center ${
-            showQuestsPanel 
-              ? 'bg-purple-600 border-purple-500 text-white shadow-[0_0_10px_rgba(147,51,234,0.3)]' 
-              : 'bg-slate-900 border-slate-700 text-slate-400 active:bg-slate-800'
-          }`}
-          title="Трекер квестов и торговцев"
-        >
-          <ListTodo size={20} />
-        </button>
       </div>
     </div>
   );

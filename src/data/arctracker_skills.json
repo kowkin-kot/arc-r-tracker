@@ -14,7 +14,7 @@
     "maxPoints": 5,
     "impactedSkill": {
       "en": "Movement Speed",
-      "ru": "Скорость пер��движения"
+      "ru": "Скорость перссдвижения"
     },
     "knownValue": [],
     "position": {
@@ -623,7 +623,7 @@
     "id": "mob_5l",
     "name": {
       "en": "Effortless Roll",
-      "ru": "Легкий пе��екат"
+      "ru": "Легкий пессекат"
     },
     "category": "MOBILITY",
     "isMajor": false,
