@@ -206,7 +206,10 @@ export const SkillsPanel: React.FC<{
       </div>
 
       <div className="relative w-full h-[600px] sm:h-[750px] bg-slate-950 rounded-xl border border-slate-800 shadow-2xl overflow-auto custom-scrollbar">
-        <div className="relative min-w-[1024px] min-h-[800px] sm:min-w-full sm:min-h-full h-full">
+        <div 
+          className="relative h-full"
+          style={{ minWidth: '1024px', minHeight: '800px' }}
+        >
         {/* Background decorations */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:30px_30px]"></div>
         
