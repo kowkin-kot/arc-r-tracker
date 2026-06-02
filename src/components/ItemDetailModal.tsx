@@ -327,7 +327,7 @@ export const ItemDetailModal: React.FC<ItemDetailModalProps> = ({ item, onClose,
                         const phaseName = projInfo?.phases?.find((ph: any) => ph.phase === p.phase)?.nameRu || '';
                         return (
                           <li key={`${p.projectId}-${p.phase}-${idx}`}>
-                            <span className="font-semibold">{pName}</span> (Фаза {p.phase}: {phaseName})
+                            <span className="font-semibold">{pName}</span> (Фаза {p.phase}{phaseName ? `: ${phaseName}` : ''})
                           </li>
                         );
                       })}

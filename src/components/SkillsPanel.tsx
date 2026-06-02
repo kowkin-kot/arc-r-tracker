@@ -30,37 +30,21 @@ const CATEGORY_COLORS: Record<string, { main: string; text: string; bg: string; 
   }
 };
 
-export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
+const CATEGORY_RU: Record<string, string> = {
+  CONDITIONING: 'ПОДГОТОВКА',
+  MOBILITY: 'МОБИЛЬНОСТЬ',
+  SURVIVAL: 'ВЫЖИВАНИЕ'
+};
+
+export const SkillsPanel: React.FC<{ 
+  search: string;
+  skillPoints: Record<string, number>;
+  setSkillPoints: React.Dispatch<React.SetStateAction<Record<string, number>>>;
+  extraPoints: number;
+  setExtraPoints: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ search, skillPoints, setSkillPoints, extraPoints, setExtraPoints }) => {
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   
-  // Load skill points from local storage
-  const [skillPoints, setSkillPoints] = useState<Record<string, number>>(() => {
-    try {
-      const saved = window.localStorage.getItem('arc_skill_points');
-      return saved ? JSON.parse(saved) : {};
-    } catch {
-      return {};
-    }
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem('arc_skill_points', JSON.stringify(skillPoints));
-  }, [skillPoints]);
-
-  // Load extra points from local storage
-  const [extraPoints, setExtraPoints] = useState<number>(() => {
-    try {
-      const saved = window.localStorage.getItem('arc_extra_points');
-      return saved ? parseInt(saved, 10) : 0;
-    } catch {
-      return 0;
-    }
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem('arc_extra_points', extraPoints.toString());
-  }, [extraPoints]);
-
   const currentMaxPoints = MAX_TOTAL_POINTS + extraPoints;
 
   const pointsByCategory = useMemo(() => {
@@ -221,8 +205,8 @@ export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
         </button>
       </div>
 
-      <div className="relative w-full h-[750px] bg-slate-950 rounded-xl border border-slate-800 shadow-2xl overflow-x-auto custom-scrollbar">
-        <div className="relative min-w-[800px] h-full">
+      <div className="relative w-full h-[600px] sm:h-[750px] bg-slate-950 rounded-xl border border-slate-800 shadow-2xl overflow-auto custom-scrollbar">
+        <div className="relative min-w-[1024px] min-h-[800px] sm:min-w-full sm:min-h-full h-full">
         {/* Background decorations */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:30px_30px]"></div>
         
@@ -385,11 +369,11 @@ export const SkillsPanel: React.FC<{ search: string }> = ({ search }) => {
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center gap-2">
                       <span className={`px-2 py-0.5 rounded ${CATEGORY_COLORS[selectedSkill.category].bg}/20 ${CATEGORY_COLORS[selectedSkill.category].text} text-[10px] font-black uppercase tracking-widest`}>
-                        {selectedSkill.category}
+                        {CATEGORY_RU[selectedSkill.category] || selectedSkill.category}
                       </span>
                       {selectedSkill.isMajor && (
                         <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-500 text-[10px] font-black uppercase tracking-widest">
-                          MAJOR
+                          КЛЮЧЕВОЙ
                         </span>
                       )}
                     </div>

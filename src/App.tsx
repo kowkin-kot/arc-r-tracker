@@ -63,7 +63,20 @@ if (typeof window !== 'undefined' && !didPrefetchJson) {
   })();
 }
 
+import { auth, signInWithGoogle, logOut, db } from './firebase';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { doc, setDoc, onSnapshot } from 'firebase/firestore';
+
 export default function App() {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (usr) => {
+      setUser(usr);
+    });
+    return () => unsub();
+  }, []);
+
   const [search, setSearch] = useState('');
   const [filterType, setFilterType] = useState('All');
   const [showQuestItemsOnly, setShowQuestItemsOnly] = useState(false);
@@ -84,6 +97,11 @@ export default function App() {
     const newOverrides = { ...overrides, [itemId]: { ...overrides[itemId], ...data } };
     setOverrides(newOverrides);
     window.localStorage.setItem('arc_overrides', JSON.stringify(newOverrides));
+    
+    // Sync to Firestore
+    if (user) {
+      setDoc(doc(db, 'users', user.uid), { overrides: newOverrides }, { merge: true }).catch(console.error);
+    }
   };
 
   const handleEditClick = () => {
@@ -151,16 +169,55 @@ export default function App() {
     }
   });
 
+  const [skillPoints, setSkillPoints] = useState<Record<string, number>>(() => {
+    try {
+      const saved = window.localStorage.getItem('arc_skill_points');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  const [extraPoints, setExtraPoints] = useState<number>(() => {
+    try {
+      const saved = window.localStorage.getItem('arc_extra_points');
+      return saved ? parseInt(saved, 10) : 0;
+    } catch {
+      return 0;
+    }
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem('arc_skill_points', JSON.stringify(skillPoints));
+    if (user) {
+      setDoc(doc(db, 'users', user.uid), { skillPoints }, { merge: true }).catch(console.error);
+    }
+  }, [skillPoints, user]);
+
+  useEffect(() => {
+    window.localStorage.setItem('arc_extra_points', extraPoints.toString());
+    if (user) {
+      setDoc(doc(db, 'users', user.uid), { extraPoints }, { merge: true }).catch(console.error);
+    }
+  }, [extraPoints, user]);
+
   const updateWorkshopLevel = (type: WorkshopType, level: number) => {
     const nextLevels = { ...workshopLevels, [type]: level };
     setWorkshopLevels(nextLevels);
     window.localStorage.setItem('arc_workshop_levels', JSON.stringify(nextLevels));
+    // Sync to Firestore
+    if (user) {
+      setDoc(doc(db, 'users', user.uid), { workshopLevels: nextLevels }, { merge: true }).catch(console.error);
+    }
   };
 
   useEffect(() => {
-    // Save to local storage whenever scrappyLevel changes
     window.localStorage.setItem('arc_scrappy_level', scrappyLevel.toString());
-  }, [scrappyLevel]);
+    // Sync to Firestore
+    if (user) {
+      setDoc(doc(db, 'users', user.uid), { scrappyLevel }, { merge: true }).catch(console.error);
+    }
+  }, [scrappyLevel, user]);
 
   const [isListening, setIsListening] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
@@ -170,8 +227,48 @@ export default function App() {
       window.localStorage.setItem('arc_completed_quests', JSON.stringify(completedQuests));
       window.localStorage.setItem('arc_completed_projects', JSON.stringify(completedProjectPhases));
       window.localStorage.setItem('arc_collected_blueprints', JSON.stringify(collectedBlueprints));
+
+      // Sync to Firestore
+      if (user) {
+        setDoc(doc(db, 'users', user.uid), { 
+          completedQuests,
+          completedProjectPhases,
+          collectedBlueprints
+        }, { merge: true }).catch(console.error);
+      }
     } catch (e) {}
-  }, [completedQuests, completedProjectPhases, collectedBlueprints]);
+  }, [completedQuests, completedProjectPhases, collectedBlueprints, user]);
+
+  useEffect(() => {
+    if (user) {
+      const unsub = onSnapshot(doc(db, 'users', user.uid), (doc) => {
+        if (doc.exists()) {
+          const data = doc.data();
+          if (data.overrides) setOverrides(data.overrides);
+          if (data.completedQuests) setCompletedQuests(data.completedQuests);
+          if (data.completedProjectPhases) setCompletedProjectPhases(data.completedProjectPhases);
+          if (data.collectedBlueprints) setCollectedBlueprints(data.collectedBlueprints);
+          if (data.scrappyLevel !== undefined) setScrappyLevel(data.scrappyLevel);
+          if (data.workshopLevels) setWorkshopLevels(data.workshopLevels);
+          if (data.skillPoints) setSkillPoints(data.skillPoints);
+          if (data.extraPoints !== undefined) setExtraPoints(data.extraPoints);
+        } else {
+          // Document does not exist, upload initial local state
+          setDoc(doc.ref, {
+            overrides,
+            completedQuests,
+            completedProjectPhases,
+            collectedBlueprints,
+            scrappyLevel,
+            workshopLevels,
+            skillPoints,
+            extraPoints
+          }, { merge: true });
+        }
+      });
+      return () => unsub();
+    }
+  }, [user]); // We intentionally do not include dependencies for the local state here to avoid infinite loops, data will sync back when loaded
 
   useEffect(() => {
     if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
@@ -277,7 +374,7 @@ export default function App() {
     <div id="main-container" className="min-h-screen bg-slate-950 font-sans sm:p-4 pb-12">
       <div className="max-w-6xl mx-auto">
         <header id="app-header" className="mb-4 pt-3 px-3 sm:px-0">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
               <h1 className="text-xl sm:text-3xl font-black text-white tracking-tight flex items-baseline gap-2">
                 ARC Raiders <span className="text-blue-500">Лут Трекер</span>
@@ -290,6 +387,34 @@ export default function App() {
                 </button>
               </h1>
             </motion.div>
+            <div className="flex items-center">
+              {user ? (
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-slate-400 font-medium hidden sm:inline-block">
+                    {user.email}
+                  </span>
+                  <button 
+                    onClick={logOut}
+                    className="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-lg transition-colors border border-slate-700"
+                  >
+                    ВЫЙТИ
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={signInWithGoogle}
+                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-lg shadow-lg shadow-blue-500/20 transition-all flex items-center gap-2"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                  ВОЙТИ
+                </button>
+              )}
+            </div>
           </div>
         </header>
 
@@ -497,7 +622,13 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
             >
-              <SkillsPanel search={search} />
+              <SkillsPanel 
+                search={search}
+                skillPoints={skillPoints}
+                setSkillPoints={setSkillPoints}
+                extraPoints={extraPoints}
+                setExtraPoints={setExtraPoints}
+              />
             </motion.div>
           )}
         </AnimatePresence>
